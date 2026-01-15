@@ -38,4 +38,5 @@ coding!
 - Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
 
    ...
+- Maki Keep: [GitHub](https://github.com/maki-keep)
 - Yashwanth Venkatesan: [GitHub](https://github.com/tigeryash) / [LinkedIn](https://www.linkedin.com/in/yashwanth-v-29a88392/)
