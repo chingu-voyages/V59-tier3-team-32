@@ -38,4 +38,4 @@ coding!
 - Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
 
    ...
-- Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Yashwanth Venkatesan: [GitHub](https://github.com/tigeryash) / [LinkedIn](https://www.linkedin.com/in/yashwanth-v-29a88392/)
