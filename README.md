@@ -42,3 +42,4 @@ coding!
 - Yashwanth Venkatesan: [GitHub](https://github.com/tigeryash) / [LinkedIn](https://www.linkedin.com/in/yashwanth-v-29a88392/)
 - Amanda Acolatse: [GitHub](https://github.com/ae-aco) / [LinkedIn](https://linkedin.com/in/amandaacolatse) 
 - Michael Okoro :  [GitHub](https://github.com/abiazfinest)/[LinkedIn](https://www.linkedin.com/in/michaelcokoro/)
+- snowbytes:  [GitHub](https://github.com/snowbytes)
