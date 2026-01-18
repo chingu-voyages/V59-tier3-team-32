@@ -43,3 +43,4 @@ coding!
 - Amanda Acolatse: [GitHub](https://github.com/ae-aco) / [LinkedIn](https://linkedin.com/in/amandaacolatse) 
 - Michael Okoro :  [GitHub](https://github.com/abiazfinest)/[LinkedIn](https://www.linkedin.com/in/michaelcokoro/)
 - snowbytes:  [GitHub](https://github.com/snowbytes)
+- Yakboon: [Github](https://github.com/Yakboon) / [LinkedIn](https://www.linkedin.com/in/nazlı-yüce-423143256/)
