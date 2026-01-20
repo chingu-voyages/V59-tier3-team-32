@@ -5,8 +5,9 @@
   "type": "module",
   "description": "a web based interview question generator.",
   "license": "AGPL-3.0-or-later",
+  "workspaces": ["apps/*"],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server:start": "npm run start -w apps/server"
   },
   "directories": {
     "doc": "docs"

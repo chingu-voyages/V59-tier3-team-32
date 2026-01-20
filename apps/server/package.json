@@ -1,0 +1,14 @@
+{
+  "name": "@v59-tier3-team-32/server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "API server",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "5.2.1"
+  }
+}
