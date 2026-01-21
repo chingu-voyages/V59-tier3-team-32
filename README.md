@@ -13,6 +13,15 @@ in your `readme` feel free to replace the text we've provided here.
 
 > Own it & Make it your Own!
 
+## Dev Setup
+
+1. Install dependencies
+
+   ```sh
+   # from the root of the repo
+   npm ci
+   ```
+
 ## Team Documents
 
 You may find these helpful as you work together to organize your project.
@@ -29,18 +38,11 @@ Meeting Agenda templates (located in the `/docs` directory in this repo):
 
 ## Our Team
 
-Everyone on your team should add their name along with a link to their GitHub
-& optionally their LinkedIn profiles below. Do this in Sprint #1 to validate
-your repo access and to practice PR'ing with your team *before* you start
-coding!
-
-- Teammate name #1: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
-- Soma Ali #2: [GitHub](https://github.com/Soma-Ali) / [LinkedIn](https://linkedin.com/in/soma-a-ibrahim)
-   ...
-- Maki Keep: [GitHub](https://github.com/maki-keep)
 - Abba Is'haq: [Gitub](https://github.com/absterr) / [LinkedIn](https://linkedin.com/in/absterr)
-- Yashwanth Venkatesan: [GitHub](https://github.com/tigeryash) / [LinkedIn](https://www.linkedin.com/in/yashwanth-v-29a88392/)
-- Amanda Acolatse: [GitHub](https://github.com/ae-aco) / [LinkedIn](https://linkedin.com/in/amandaacolatse) 
+- Amanda Acolatse: [GitHub](https://github.com/ae-aco) / [LinkedIn](https://linkedin.com/in/amandaacolatse)
+- Maki Keep: [GitHub](https://github.com/maki-keep)
 - Michael Okoro :  [GitHub](https://github.com/abiazfinest)/[LinkedIn](https://www.linkedin.com/in/michaelcokoro/)
 - snowbytes:  [GitHub](https://github.com/snowbytes)
+- Soma Ali: [GitHub](https://github.com/Soma-Ali) / [LinkedIn](https://linkedin.com/in/soma-a-ibrahim)
 - Yakboon: [Github](https://github.com/Yakboon) / [LinkedIn](https://www.linkedin.com/in/nazlı-yüce-423143256/)
+- Yashwanth Venkatesan: [GitHub](https://github.com/tigeryash) / [LinkedIn](https://www.linkedin.com/in/yashwanth-v-29a88392/)

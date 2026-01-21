@@ -1,0 +1,11 @@
+{
+  "name": "@v59-tier3-team-32/web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "web client",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  }
+}
