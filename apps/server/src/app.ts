@@ -1,5 +1,5 @@
 import express from "express";
-
+import healthRouter from "./health/index.js";
 const app = express();
 
 app.use(function logRequests(req, _, next) {
@@ -9,7 +9,7 @@ app.use(function logRequests(req, _, next) {
 
 app.use(express.json());
 
-app.get("/api/v1", (_, res) => res.send("hi"));
+app.use("/api/v1/health", healthRouter);
 
 app.use(function onUnhandledRequests(_, res) {
     res.status(404).send({ message: "route not found" });
