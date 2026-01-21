@@ -7,6 +7,7 @@
   "license": "AGPL-3.0-or-later",
   "workspaces": ["apps/*"],
   "scripts": {
+    "server:dev": "npm run dev -w apps/server",
     "server:build": "npm run build -w apps/server",
     "server:start": "npm run start -w apps/server"
   },

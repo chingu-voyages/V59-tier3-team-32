@@ -6,6 +6,7 @@
   "description": "API server",
   "main": "src/server.js",
   "scripts": {
+    "dev": "nodemon src/server.ts",
     "build": "tsc -b",
     "start": "node dist/server.js"
   },
@@ -14,6 +15,7 @@
   },
   "devDependencies": {
     "@types/express": "5.0.6",
+    "nodemon": "3.1.11",
     "ts-node": "10.9.2"
   }
 }
