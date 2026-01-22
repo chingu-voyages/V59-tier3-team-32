@@ -1,7 +1,10 @@
 import app from "./app.js";
+import { SERVER_ENV } from "./config/env.js";
+
 import type { Socket } from "node:net";
 
-const PORT = 3000
+const { PORT } = SERVER_ENV
+
 console.info("> server starting");
 const server = app.listen(PORT, () => {
     console.info(`> server listening on port ${PORT}`);

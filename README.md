@@ -22,7 +22,8 @@ in your `readme` feel free to replace the text we've provided here.
    npm ci
    ```
 
-2. spin up dev servers
+2. Clone each `.env.sample` as `.env` for relevant apps & fill their respective values.
+3. spin up dev servers
 
    ```sh
    # from the root of the repo once again
