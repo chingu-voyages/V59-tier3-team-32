@@ -1,3 +1,7 @@
+export const DATABASE_ENV = {
+    URL: requireEnv("DATABASE_URL")
+}
+
 export const SERVER_ENV = {
     PORT: requireEnv("SERVER_PORT")
 }

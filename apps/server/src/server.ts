@@ -1,12 +1,20 @@
 import app from "./app.js";
 import { SERVER_ENV } from "./config/env.js";
+import { closeDb, pingDb } from "./database/index.js";
 
 import type { Socket } from "node:net";
 
 const { PORT } = SERVER_ENV
 
 console.info("> server starting");
-const server = app.listen(PORT, () => {
+
+if (!await pingDb()) {
+    console.error("> startup aborted: database unavailable");
+    await closeDb().catch(console.error)
+    process.exit(1);
+}
+
+const server = app.listen(PORT, async () => {
     console.info(`> server listening on port ${PORT}`);
 })
 
@@ -43,9 +51,16 @@ process.on("uncaughtException", (err) => {
 function shutdown() {
     console.info("> attempting graceful shutdown");
 
-    server.close(() => {
+    server.close(async () => {
         console.info("> http server closed");
-        process.exit(0);
+
+        try {
+            await closeDb();
+            process.exit(0);
+        } catch (err) {
+            console.error(err);
+            process.exit(1);
+        }
     })
 
     setTimeout(() => {
