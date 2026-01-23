@@ -23,7 +23,14 @@ in your `readme` feel free to replace the text we've provided here.
    ```
 
 2. Clone each `.env.sample` as `.env` for relevant apps & fill their respective values.
-3. spin up dev servers
+3. run migrations
+
+   ```sh
+   # from the root of the repo
+   npm run db:migrate
+   ```
+
+4. spin up dev servers
 
    ```sh
    # from the root of the repo once again
