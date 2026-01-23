@@ -1,6 +1,7 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 import { DATABASE_ENV } from "../config/env.js";
+import { createId, isCuid } from "@paralleldrive/cuid2";
 
 let db: ReturnType<typeof drizzle> | undefined;
 let pool: Pool | undefined;
@@ -51,4 +52,12 @@ export async function closeDb() {
         console.error("> error while closing database");
         throw err;
     }
+}
+
+export function makeId() {
+    return createId()
+}
+
+export function isValidId(id: string) {
+    return isCuid(id)
 }
