@@ -22,6 +22,21 @@ in your `readme` feel free to replace the text we've provided here.
    npm ci
    ```
 
+2. Clone each `.env.sample` as `.env` for relevant apps & fill their respective values.
+3. run migrations
+
+   ```sh
+   # from the root of the repo
+   npm run db:migrate
+   ```
+
+4. spin up dev servers
+
+   ```sh
+   # from the root of the repo once again
+   npm run server:dev
+   ```
+
 ## Team Documents
 
 You may find these helpful as you work together to organize your project.

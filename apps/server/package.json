@@ -6,9 +6,24 @@
   "description": "API server",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js"
+    "dev": "dotenvx run -- nodemon src/server.ts",
+    "build": "tsc -b",
+    "start": "node dist/server.js",
+    "db:generate": "dotenvx run -- drizzle-kit generate",
+    "db:migrate": "dotenvx run -- drizzle-kit migrate"
   },
   "dependencies": {
-    "express": "5.2.1"
+    "@paralleldrive/cuid2": "3.0.6",
+    "drizzle-orm": "0.45.1",
+    "express": "5.2.1",
+    "pg": "8.17.2"
+  },
+  "devDependencies": {
+    "@dotenvx/dotenvx": "1.51.4",
+    "@types/express": "5.0.6",
+    "@types/pg": "8.16.0",
+    "drizzle-kit": "0.31.8",
+    "nodemon": "3.1.11",
+    "ts-node": "10.9.2"
   }
 }
