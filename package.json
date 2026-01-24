@@ -7,9 +7,15 @@
   "license": "AGPL-3.0-or-later",
   "workspaces": ["apps/*"],
   "scripts": {
+    "======================= WEB ========================": "",
+    "web:dev": "npm run dev -w apps/web",
+    "web:build": "npm run build -w apps/web",
+    "web:start": "npm run start -w apps/web",
+    "===================== SERVER =======================": "",
     "server:dev": "npm run dev -w apps/server",
     "server:build": "npm run build -w apps/server",
     "server:start": "npm run start -w apps/server",
+    "======================= DB =========================": "",
     "db:generate": "npm run db:generate -w apps/server",
     "db:migrate": "npm run db:migrate -w apps/server"
   },

@@ -30,11 +30,12 @@ in your `readme` feel free to replace the text we've provided here.
    npm run db:migrate
    ```
 
-4. spin up dev servers
+4. spin up dev servers in separate terminals
 
    ```sh
    # from the root of the repo once again
    npm run server:dev
+   npm run web:dev
    ```
 
 ## Team Documents
