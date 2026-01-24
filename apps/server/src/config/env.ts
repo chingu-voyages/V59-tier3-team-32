@@ -3,6 +3,7 @@ export const DATABASE_ENV = {
 }
 
 export const SERVER_ENV = {
+    FRONTEND_ORIGIN: requireEnv("FRONTEND_ORIGIN"),
     PORT: requireEnv("SERVER_PORT")
 }
 
