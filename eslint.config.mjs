@@ -9,11 +9,13 @@ const eslintConfig = [
     ...nextVitals,
     {
         files: ["apps/web/**/*.{ts,tsx}"],
+        rules: {
+            "@next/next/no-html-link-for-pages": "off"
+        },
         languageOptions: {
             parser: tsParser,
             parserOptions: { ecmaVersion: 2023, sourceType: "module" },
         },
-        plugins: { "@typescript-eslint": tsPlugin },
     },
 
     // Server (Node.js)

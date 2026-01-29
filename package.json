@@ -20,12 +20,18 @@
     "server:start": "npm run start -w apps/server",
     "======================= DB =========================": "",
     "db:generate": "npm run db:generate -w apps/server",
-    "db:migrate": "npm run db:migrate -w apps/server"
+    "db:migrate": "npm run db:migrate -w apps/server",
+    "======================= UNIT TESTS =========================": "",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:web": "vitest apps/web",
+    "test:server": "vitest apps/server"
   },
   "lint-staged": {
     "apps/**/*.{ts, tsx}": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --write",
+      "vitest run --passWithNoTests"
     ]
   },
   "directories": {
@@ -49,6 +55,7 @@
     "eslint-plugin-prettier": "5.5.5",
     "husky": "9.1.7",
     "lint-staged": "16.2.7",
-    "prettier": "3.8.1"
+    "prettier": "3.8.1",
+    "vitest": "4.0.18"
   }
 }

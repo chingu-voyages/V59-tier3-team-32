@@ -10,7 +10,9 @@
     "build": "tsc -b",
     "start": "node dist/server.js",
     "db:generate": "dotenvx run -- drizzle-kit generate",
-    "db:migrate": "dotenvx run -- drizzle-kit migrate"
+    "db:migrate": "dotenvx run -- drizzle-kit migrate",
+    "test": "vitest",
+    "test:run": "vitest run"
   },
   "dependencies": {
     "@paralleldrive/cuid2": "3.0.6",
