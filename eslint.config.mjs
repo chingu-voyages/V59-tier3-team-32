@@ -1,34 +1,63 @@
-import js from "@eslint/js";
-import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import nextVitals from "eslint-config-next/core-web-vitals";
-import prettier from "eslint-config-prettier";
+import nextTs from "eslint-config-next/typescript";
+import prettier from "eslint-config-prettier/flat";
+import { defineConfig, globalIgnores } from "eslint/config";
 
-const eslintConfig = [
-    // Web (Next.js)
-    ...nextVitals,
-    {
-        files: ["apps/web/**/*.{ts,tsx}"],
-        rules: {
-            "@next/next/no-html-link-for-pages": "off"
-        },
-        languageOptions: {
-            parser: tsParser,
-            parserOptions: { ecmaVersion: 2023, sourceType: "module" },
-        },
+export default defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  {
+    settings: {
+      next: {
+        rootDir: "apps/web"
+      }
+    }
+  },
+
+  {
+    files: ["apps/*/src/**/*.{ts,tsx,js,jsx}"],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        project: [
+          "./apps/web/tsconfig.json",
+          "./apps/server/tsconfig.json",
+        ],
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
     },
-
-    // Server (Node.js)
-    js.configs.recommended,
-    {
-        files: ["apps/server/**/*.{ts,js}"],
-        languageOptions: {
-            parser: tsParser,
-            parserOptions: { ecmaVersion: 2023, sourceType: "module" },
-        },
+    rules: {
+      "no-unused-vars": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
     },
+  },
 
-    prettier,
-];
+  {
+    files: ["apps/web/**/*.{ts,tsx,js,jsx}"],
+    rules: {
+      "@next/next/no-html-link-for-pages": "off",
+    }
+  },
 
-export default eslintConfig;
+  {
+    files: ["apps/*/src/**/*.{ts,tsx,js,jsx}"],
+    ...prettier,
+  },
+
+  globalIgnores([
+    "**/node_modules/",
+    "**/dist/",
+    "**/build/",
+    "**/.next/",
+    "**/out/",
+    "**/.next/cache/",
+    "**/*.config.js",
+    "**/*.config.mjs",
+    "**/*.d.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+  ]),
+]);
