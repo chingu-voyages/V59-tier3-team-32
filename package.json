@@ -9,7 +9,7 @@
     "apps/*"
   ],
   "scripts": {
-    "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then husky; fi",
+    "prepare": "if [ \"$CI\" != \"true\" ]; then husky; fi",
     "lint": "eslint apps",
     "======================= WEB ========================": "",
     "web:dev": "npm run dev -w apps/web",
