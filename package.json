@@ -9,7 +9,7 @@
     "apps/*"
   ],
   "scripts": {
-    "prepare": "if [ \"$CI\" != \"true\" ]; then husky; fi",
+    "prepare": "npx husky",
     "lint": "eslint apps",
     "======================= WEB ========================": "",
     "web:dev": "npm run dev -w apps/web",
