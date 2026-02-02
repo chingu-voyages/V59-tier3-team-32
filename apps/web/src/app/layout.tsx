@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import './globals.css';
+import Header from '@/components/header';
 
 export const metadata: Metadata = {
   title: 'Web client',
@@ -14,7 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.className} antialiased`}>{children}</body>
+      <body className={`${GeistSans.className} antialiased`}>
+        <Header />{children}</body>
     </html>
   );
 }

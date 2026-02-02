@@ -12,9 +12,11 @@ export default function Home() {
   }, [])
 
   return (
-    <main>
+    <>
+    <main className="">
       Howdy
       <pre>{JSON.stringify(health)}</pre>
     </main>
+    </>
   )
 }
