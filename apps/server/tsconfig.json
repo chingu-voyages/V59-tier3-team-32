@@ -1,10 +1,14 @@
 {
-    "include": ["src"],
+    "include": [
+        "src"
+    ],
     "compilerOptions": {
         "rootDir": "src",
         "outDir": "dist",
         "target": "es2023",
-        "lib": ["ES2023"],
+        "lib": [
+            "ES2023"
+        ],
         "strict": true,
         "noUncheckedIndexedAccess": true,
         "noImplicitOverride": true,
@@ -16,10 +20,15 @@
         "moduleDetection": "force",
         "isolatedModules": true,
         "verbatimModuleSyntax": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
     },
+    "exclude": [
+        "**/*.test.ts",
+        "**/*.spec.ts",
+        "tests",
+        "vitest.config.ts",
+    ],
     "ts-node": {
         "logError": true
     }
-  }
-  
+}
