@@ -9,6 +9,13 @@ vi.mock("../fs/loadJsonFile.js", () => ({
 }));
 
 describe("getFlashcards", () => {
+  const mockRequest = () => {
+    const req: any = {};
+    req.query = vi.fn().mockReturnValue(req);
+    req.query.role = vi.fn().mockReturnValue(req);
+    return req;
+  };
+
   const mockResponse = () => {
     const res: any = {};
     res.status = vi.fn().mockReturnValue(res);
@@ -27,9 +34,10 @@ describe("getFlashcards", () => {
     ];
 
     vi.mocked(loadJsonFile).mockResolvedValue(mockFlashcards);
+    const req = mockRequest();
     const res = mockResponse();
 
-    await getFlashcards({} as any, res);
+    await getFlashcards(req, res);
 
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith(mockFlashcards);
@@ -37,9 +45,10 @@ describe("getFlashcards", () => {
 
   it("returns 500: Failed to load flashcards", async () => {
     vi.mocked(loadJsonFile).mockRejectedValue(new Error("Failed to read file"));
+    const req = mockRequest();
     const res = mockResponse();
 
-    await getFlashcards({} as any, res);
+    await getFlashcards(req, res);
 
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.json).toHaveBeenCalledWith({
