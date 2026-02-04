@@ -32,14 +32,21 @@ describe("Roles Page", () => {
 
   it("renders the correct number of role cards", () => {
     render(<Roles />);
-    const headings = screen.getAllByRole("heading", { name: "UI/UX Designer" });
-    expect(headings).toHaveLength(4);
-    expect(screen.getAllByTestId("designer-icon")).toHaveLength(4);
+    const roleTitles = [
+      "Product Owner",
+      "Scrum Master",
+      "UI/UX Designer",
+      "Web Developer",
+      "Python Developer",
+    ];
+    roleTitles.forEach((title) => {
+      expect(screen.getByText(title)).toBeInTheDocument();
+    });
   });
 
   it("renders action buttons for each card", () => {
     render(<Roles />);
-    expect(screen.getAllByText(/view leaderboard/i)).toHaveLength(4);
-    expect(screen.getAllByText(/test your knowledge/i)).toHaveLength(4);
+    expect(screen.getAllByText(/view leaderboard/i)).toHaveLength(5);
+    expect(screen.getAllByText(/test your knowledge/i)).toHaveLength(5);
   });
 });

@@ -5,13 +5,13 @@ export default function Roles() {
   const roles = [
     {
       id: 1,
-      title: "UI/UX Designer",
+      title: "Product Owner",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquot odio mattis.",
     },
     {
       id: 2,
-      title: "UI/UX Designer",
+      title: "Scrum Master",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquot odio mattis.",
       questions: 20,
@@ -24,7 +24,13 @@ export default function Roles() {
     },
     {
       id: 4,
-      title: "UI/UX Designer",
+      title: "Web Developer",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquot odio mattis.",
+    },
+    {
+      id: 5,
+      title: "Python Developer",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquot odio mattis.",
     },
