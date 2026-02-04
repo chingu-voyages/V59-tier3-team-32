@@ -7,7 +7,7 @@ export default function WebDevIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_793_9644)">
+      <g clipPath="url(#clip0_793_9644)">
         <path
           d="M129.017 110.853C128.55 106.833 128.426 102.76 128.649 98.7056L129.017 91.9961C126.987 97.1514 127.446 103.937 129.017 110.853Z"
           fill="#D6D6E3"
