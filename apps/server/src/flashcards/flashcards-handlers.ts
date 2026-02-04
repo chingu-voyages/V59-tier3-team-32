@@ -4,7 +4,7 @@ import { RoleParam } from "../enums/roleParam.js";
 import type { Role } from "../types/role.js";
 
 // import from absolute file path
-const FLASHCARDS_URL = new URL("../data/flashcards.json", import.meta.url);
+const FLASHCARDS_URL = new URL("../../data/flashcards.json", import.meta.url);
 
 // role in query parameter: role in flashcards
 const FLASHCARDS_ROLE: Record<RoleParam, string> = {
