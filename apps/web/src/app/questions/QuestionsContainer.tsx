@@ -31,7 +31,7 @@ const QuestionsContainer = ({
 
   return (
     <section className="mx-auto max-w-304 py-16">
-      <header className="flex items-center justify-between mb-8">
+      <header className="flex items-center justify-between pb-8">
         <nav className="text-2xl">
           <Link href="/">
             <ArrowLeft size={28} className="text-(--color-primary)" />
@@ -47,11 +47,11 @@ const QuestionsContainer = ({
           <div className="flex flex-col gap-y-3">
             <div className="w-full bg-[#1a103c] rounded-full h-3">
               <div
-                className="bg-[#A78BFA] h-3 rounded-full transition-all duration-300"
+                className="bg-(--color-secondary) h-3 rounded-full transition-all duration-300"
                 style={{ width: `${progressPercentage}%` }}
               ></div>
             </div>
-            <p className="text-right text-gray-400 text-sm">
+            <p className="text-right text-(--color-secondary)">
               Questions {index + 1} / {totalQuestions}
             </p>
           </div>

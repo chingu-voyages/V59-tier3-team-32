@@ -10,7 +10,7 @@ export default async function Questions({
   const roleDetails = await getFlashcardQuestions(role);
 
   return (
-    <main className="min-h-screen bg-[#0B0E14] text-white">
+    <main className="min-h-screen bg-[#0F1425] text-white">
       <QuestionsContainer roleDetails={roleDetails} />
     </main>
   );
