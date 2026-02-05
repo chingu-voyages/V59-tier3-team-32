@@ -4,13 +4,13 @@ import QuestionsContainer from "./QuestionsContainer";
 export default async function Questions({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const role = searchParams.role;
+  const role = (await searchParams).role;
   const roleDetails = await getFlashcardQuestions(role);
 
   return (
-    <main>
+    <main className="min-h-screen bg-[#0B0E14] text-white">
       <QuestionsContainer roleDetails={roleDetails} />
     </main>
   );
