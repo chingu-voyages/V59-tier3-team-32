@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "dotenvx run -- nodemon src/server.ts",
     "build": "tsc -b",
-    "start": "node dist/server.js",
+    "start": "dotenvx run -- node dist/server.js",
     "db:generate": "dotenvx run -- drizzle-kit generate",
     "db:migrate": "dotenvx run -- drizzle-kit migrate",
     "test": "vitest",
