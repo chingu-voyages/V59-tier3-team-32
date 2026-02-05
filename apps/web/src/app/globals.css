@@ -119,7 +119,12 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    --color-primary: #C178FD;
+    --color-secondary: #B256FC;
+    --color-card: #1A0238;
+    --custom-gray: #CCD1D0;
   }
 }
