@@ -37,7 +37,7 @@ const QuestionsContainer = ({
             <ArrowLeft size={28} className="text-(--color-primary)" />
           </Link>
         </nav>
-        <h1 className="text-3xl font-bold text-(--color-primary)">
+        <h1 className="text-4xl font-semibold text-(--color-primary)">
           {isFinished ? "Summary" : roleDetails.role}
         </h1>
         <span className="w-7" />
@@ -45,9 +45,9 @@ const QuestionsContainer = ({
       {!isFinished && (
         <section className="p-6 max-w-5xl mx-auto">
           <div className="flex flex-col gap-y-3">
-            <div className="w-full bg-[#1a103c] rounded-full h-3">
+            <div className="w-full bg-(--color-card) h-3">
               <div
-                className="bg-(--color-secondary) h-3 rounded-full transition-all duration-300"
+                className="bg-(--color-primary-dark) h-3 rounded-sm transition-all duration-300"
                 style={{ width: `${progressPercentage}%` }}
               ></div>
             </div>
