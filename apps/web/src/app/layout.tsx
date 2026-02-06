@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
-import { GeistSans } from 'geist/font/sans';
+import { Montserrat } from 'next/font/google';
 import './globals.css';
+import Header from '@/components/header';
 
 export const metadata: Metadata = {
-  title: 'Web client',
+  title: 'Confido ',
   description: 'An interview question generator',
 };
+
+const montserrat = Montserrat({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -14,7 +17,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.className} antialiased`}>{children}</body>
+      <body className={`${montserrat.className} antialiased`}>
+        <Header />{children}</body>
     </html>
   );
 }

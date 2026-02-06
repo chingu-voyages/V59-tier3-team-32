@@ -44,28 +44,36 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-gold: var(--gold);
+  --color-silver: var(--silver);
+  --color-bronze: var(--bronze);
 }
-
+/* foreground is text color
+accent is hover state color
+destructive is eror color
+last five variables are custom colors not included in shadcn design system */
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
+  --background: #000521;
+  --foreground: #FFFFFF;
+  --card: #1A0238;
+  --card-foreground: #FFFFFF;
+  --popover: #161c2f;
+  --popover-foreground: #FFFFFF;
+  --primary: #B256FC;
+  --primary-foreground: #FFFFFF;
+  --secondary: #7CA8F8;
+  --secondary-foreground: #FFFFFF;
+  --muted: #A1A1A6;
+  --muted-foreground: #8C8C8C;
+  --accent: #9F28FF;
+  --accent-foreground: #FFFFFF;
+  --destructive: #FF6B6B;
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --ring: #920CFF;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -79,6 +87,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --success: #10B981;
+  --warning: #F59E0B;
+  --gold: #F5C857;
+  --silver: #BFC6C4;
+  --bronze: #765F24;
 }
 
 .dark {
