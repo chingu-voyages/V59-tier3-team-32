@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { z } from "zod";
 import QuestionCard from "./QuestionCard";
+import Summary from "./Summary";
 
 const QuestionsContainer = ({
   roleDetails,
@@ -24,6 +25,7 @@ const QuestionsContainer = ({
     if (index < totalQuestions - 1) {
       setIndex(index + 1);
     } else {
+      setFinished(true);
     }
   };
 
@@ -59,7 +61,7 @@ const QuestionsContainer = ({
       )}
 
       <main className="flex items-center justify-center py-10">
-        {!isFinished && (
+        {!isFinished ? (
           <QuestionCard
             key={index}
             flashcard={roleDetails.flashcards[index]}
@@ -67,6 +69,8 @@ const QuestionsContainer = ({
             totalQuestions={totalQuestions}
             onNext={handleNext}
           />
+        ) : (
+          <Summary results={results} />
         )}
       </main>
     </section>
