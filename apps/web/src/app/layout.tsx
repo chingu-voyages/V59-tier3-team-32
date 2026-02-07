@@ -1,14 +1,15 @@
-import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
-import './globals.css';
-import Header from '@/components/header';
+import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
+import "./globals.css";
+import Footer from "@/components/Footer";
+import Header from "@/components/header";
 
 export const metadata: Metadata = {
-  title: 'Confido ',
-  description: 'An interview question generator',
+  title: "Confido ",
+  description: "An interview question generator",
 };
 
-const montserrat = Montserrat({ subsets: ['latin'] });
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -18,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.className} antialiased`}>
-        <Header />{children}</body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
