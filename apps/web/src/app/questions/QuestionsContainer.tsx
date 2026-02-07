@@ -1,5 +1,6 @@
 "use client";
 import { roleSchema } from "@/lib/types";
+import { cn } from "@/lib/utils";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -35,14 +36,17 @@ const QuestionsContainer = ({
     <section className="mx-auto max-w-304 py-16">
       <header className="flex items-center justify-between pb-8">
         <nav className="text-2xl">
-          <Link href="/">
+          <Link href="/" className="flex gap-x-2 items-center">
             <ArrowLeft size={28} className="text-(--color-primary)" />
+            <span className="text-sm text-(--custom-gray) font-light hover:underline">
+              {isFinished && "Back to home"}
+            </span>
           </Link>
         </nav>
         <h1 className="text-4xl font-semibold text-(--color-primary)">
           {isFinished ? "Summary" : roleDetails.role}
         </h1>
-        <span className="w-7" />
+        <span className={cn(isFinished ? "w-28" : "w-7")} />
       </header>
       {!isFinished && (
         <section className="p-6 max-w-5xl mx-auto">

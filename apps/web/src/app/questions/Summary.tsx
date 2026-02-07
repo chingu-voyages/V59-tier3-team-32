@@ -1,4 +1,8 @@
 "use client";
+import CopunIcon from "@/components/icons/CopunIcon";
+import SmileyIcon from "@/components/icons/SmileyIcon";
+import SmileySadIcon from "@/components/icons/SmileySadIcon";
+import StarIcon from "@/components/icons/StarIcon";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -11,7 +15,9 @@ const Summary = ({ results }: { results: boolean[] }) => {
     <div>
       <header className="pb-24">
         <div className="flex items-center gap-3 pb-4">
-          <span className="text-5xl">🏅</span>
+          <span>
+            <CopunIcon />
+          </span>
           <h1 className="text-4xl font-bold">Interview completed!</h1>
         </div>
         <p className="tracking-wide text-lg font-light text-(--custom-gray)">
@@ -23,7 +29,9 @@ const Summary = ({ results }: { results: boolean[] }) => {
       <section className="pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <article className="bg-[#0A6F4D99] rounded-xl p-8 flex flex-col items-center justify-center min-h-64">
-            <span className="text-6xl pb-6">🙂</span>
+            <span className="pb-6">
+              <SmileyIcon />
+            </span>
             <p className="text-2xl font-light tracking-wide text-center">
               Correct answers:{" "}
               <strong className="text-white">{correctCount}</strong>
@@ -31,7 +39,9 @@ const Summary = ({ results }: { results: boolean[] }) => {
           </article>
 
           <article className="bg-[#AD404099] rounded-xl p-8 flex flex-col items-center justify-center min-h-64">
-            <span className="text-6xl pb-6">🙁</span>
+            <span className="pb-6">
+              <SmileySadIcon />
+            </span>
             <p className="text-2xl font-light tracking-wide text-center">
               Wrong answers:{" "}
               <strong className="text-white">{incorrectCount}</strong>
@@ -72,7 +82,9 @@ const Summary = ({ results }: { results: boolean[] }) => {
       </section>
 
       <aside className="flex items-center gap-4 pb-16">
-        <span className="text-3xl shrink-0">⭐</span>
+        <span>
+          <StarIcon />
+        </span>
         <p className="text-[#848488]">
           Great job! You&apos;ve successfully completed the interview. You can
           share your score on social media.

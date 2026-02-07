@@ -1,9 +1,10 @@
 "use client";
-import { flashcardSchema } from "@/lib/types";
-import { useState } from "react";
+import BulbIcon from "@/components/icons/BulbIcon";
 import { Button } from "@/components/ui/button";
-import z from "zod";
+import { flashcardSchema } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
+import z from "zod";
 
 interface QuestionCardProps {
   flashcard: z.infer<typeof flashcardSchema>;
@@ -70,7 +71,8 @@ const QuestionCard = ({
           Question {currentIndex + 1}
         </h2>
         <div className="flex items-center gap-2">
-          <span className="font-semibold text-xl">3</span> 💡
+          <span className="font-semibold text-xl">3</span>
+          <BulbIcon />
         </div>
       </div>
 
@@ -107,7 +109,7 @@ const QuestionCard = ({
           onClick={handleSubmit}
           disabled={!selectedOption}
           className={`disabled:cursor-not-allowed disabled:bg-gray-900 disabled:border-white 
-            cursor-pointer bg-(--color-secondary) hover:bg-(--color-primary-dark) px-10 py-5.5 
+            cursor-pointer bg-(--color-secondary) hover:bg-(--color-primary-dark) px-10 py-5
             text-base rounded-lg transition-colors border border-transparent`}
         >
           Submit
