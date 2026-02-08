@@ -26,7 +26,10 @@ export async function getFlashcards(req: Request, res: Response) {
 
     if (typeof queryRole !== "string") {
       // queryRole is not a string
-      res.status(200).json(flashcards);
+      res.status(400).json({
+        error: "No role parameter was provided",
+        allowedValues: Object.values(RoleParam),
+      });
       return;
     }
 
