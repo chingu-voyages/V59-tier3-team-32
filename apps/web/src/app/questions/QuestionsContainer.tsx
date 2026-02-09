@@ -3,7 +3,7 @@ import { roleSchema } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import QuestionCard from "./QuestionCard";
 import Summary from "./Summary";
@@ -16,6 +16,17 @@ const QuestionsContainer = ({
   const [index, setIndex] = useState(0);
   const [results, setResults] = useState<boolean[]>([]);
   const [isFinished, setFinished] = useState(false);
+
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (!isFinished) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, []);
 
   const totalQuestions = roleDetails.flashcards.length;
 
@@ -36,7 +47,18 @@ const QuestionsContainer = ({
     <section className="mx-auto max-w-304 py-16">
       <header className="flex items-center justify-between pb-8">
         <nav className="text-2xl">
-          <Link href="/" className="flex gap-x-2 items-center">
+          <Link
+            href="/"
+            className="flex gap-x-2 items-center"
+            onClick={(e) => {
+              if (
+                !isFinished &&
+                !confirm("You haven't completed the test. Leave anyway?")
+              ) {
+                e.preventDefault();
+              }
+            }}
+          >
             <ArrowLeft size={28} className="text-(--color-primary)" />
             <span className="text-sm text-(--custom-gray) font-light hover:underline">
               {isFinished && "Back to home"}
