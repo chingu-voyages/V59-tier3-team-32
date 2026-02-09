@@ -26,7 +26,7 @@ const QuestionsContainer = ({
 
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
-  }, []);
+  }, [isFinished]);
 
   const totalQuestions = roleDetails.flashcards.length;
 

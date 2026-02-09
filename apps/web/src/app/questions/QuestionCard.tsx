@@ -52,7 +52,7 @@ const QuestionCard = ({
           <div className="mt-auto flex justify-end">
             <Button
               onClick={handleNextClick}
-              className="bg-(--color-secondary) hover:bg-(--color-primary-dark) tracking-wide px-10 py-5 font-semibold transition-colors"
+              className="bg-(--color-secondary) hover:bg-(--color-primary-dark) tracking-wide px-10 py-5 font-semibold transition-colors cursor-pointer"
             >
               {currentIndex === totalQuestions - 1
                 ? "View performance"
