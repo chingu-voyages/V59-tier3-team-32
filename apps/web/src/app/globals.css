@@ -139,5 +139,10 @@ last five variables are custom colors not included in shadcn design system */
     --color-secondary: #B256FC;
     --color-card: #1A0238;
     --custom-gray: #CCD1D0;
+    --color-primary-dark: #7434A8;
+    --card-secondary: #13012A;
+    --color-option: #200246;
+    --color-selected: #0D011C;
+
   }
 }

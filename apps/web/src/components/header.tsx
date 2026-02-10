@@ -35,10 +35,10 @@ const Header = () => {
             </li>
             <li>
               <Link
-                href="/tests"
-                className={`font-semibold hover:text-primary active:text-primary ${pathname === "/tests" ? "text-primary" : ""}`}
+                href="/roles"
+                className={`font-semibold hover:text-primary active:text-primary ${pathname === "/roles" ? "text-primary" : ""}`}
               >
-                Tests
+                Roles
               </Link>
             </li>
           </ul>

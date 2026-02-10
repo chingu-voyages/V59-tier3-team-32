@@ -1,7 +1,7 @@
-import { render, screen, cleanup } from "@testing-library/react";
-import { describe, it, expect, vi, afterEach } from "vitest";
-import Roles from "@/app/roles/page";
+import Roles from "@/app/(main)/roles/page";
 import "@testing-library/jest-dom/vitest";
+import { cleanup, render, screen } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("@/app/roles/DesignerIcon", () => ({
   default: () => <div data-testid="designer-icon" />,

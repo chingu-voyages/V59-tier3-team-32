@@ -22,15 +22,15 @@ describe("Header", () => {
     mockUsePathname.mockReturnValue("/");
     render(<Header />);
     const homeLink = screen.getByText("Home");
-    const testsLink = screen.getByText("Tests");
+    const rolesLink = screen.getByText("Roles");
     expect(homeLink.className).toContain("text-primary");
-    expect(testsLink.className).not.toMatch(/(?<![:\w])text-primary/);
+    expect(rolesLink.className).not.toMatch(/(?<![:\w])text-primary/);
   });
 
-  test("tests is active on /tests", () => {
-    mockUsePathname.mockReturnValue("/tests");
+  test("roles is active on /roles", () => {
+    mockUsePathname.mockReturnValue("/roles");
     render(<Header />);
-    const testsLink = screen.getByText("Tests");
+    const testsLink = screen.getByText("Roles");
     const homeLink = screen.getByText("Home");
     expect(testsLink.className).toContain("text-primary");
     expect(homeLink.className).not.toMatch(/(?<![:\w])text-primary/);
