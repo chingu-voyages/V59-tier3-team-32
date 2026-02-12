@@ -39,6 +39,10 @@ jobs:
             env_alias: "Preview - v59-tier3-team-32-server"
 
     environment: ${{ matrix.env_alias }}
+
+    concurrency: 
+      group: migrate-${{ github.ref_name }}
+      cancel-in-progress: false
   
     steps:
       - uses: actions/checkout@v6
