@@ -19,13 +19,26 @@ const QuestionsContainer = ({
 
   useEffect(() => {
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-      if (!isFinished) {
-        e.preventDefault();
+      if (!isFinished) e.preventDefault();
+    };
+
+    const handlePopState = () => {
+      if (
+        !isFinished &&
+        !confirm("You haven't completed the test. Leave anyway?")
+      ) {
+        window.history.pushState(null, "", window.location.pathname);
       }
     };
 
+    window.history.pushState(null, "", window.location.pathname);
+
     window.addEventListener("beforeunload", handleBeforeUnload);
-    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
   }, [isFinished]);
 
   const totalQuestions = roleDetails.flashcards.length;
@@ -60,9 +73,11 @@ const QuestionsContainer = ({
             }}
           >
             <ArrowLeft size={28} className="text-(--color-primary)" />
-            <span className="text-sm text-(--custom-gray) font-light hover:underline">
-              {isFinished && "Back to home"}
-            </span>
+            {isFinished && (
+              <span className="text-sm text-(--custom-gray) font-light hover:underline">
+                {isFinished && "Back to home"}
+              </span>
+            )}
           </Link>
         </nav>
         <h1 className="text-4xl font-semibold text-(--color-primary)">
