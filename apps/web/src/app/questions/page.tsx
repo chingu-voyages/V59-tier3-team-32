@@ -1,4 +1,5 @@
 import { getFlashcardQuestions } from "@/lib/queries";
+import { isValidRole } from "@/lib/utils";
 import { redirect } from "next/navigation";
 import QuestionsContainer from "./QuestionsContainer";
 
@@ -9,7 +10,7 @@ export default async function Questions({
 }) {
   const role = (await searchParams).role;
 
-  if (typeof role !== "string") {
+  if (typeof role !== "string" || !isValidRole(role)) {
     redirect("/roles");
   }
 

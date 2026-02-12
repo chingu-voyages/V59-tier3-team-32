@@ -1,5 +1,13 @@
 import { z } from "zod";
 
+export const validRoles = [
+  "scrum_product_owner",
+  "scrum_master",
+  "ui_ux_designer",
+  "web_developer",
+  "python_developer",
+];
+
 export const flashcardSchema = z.object({
   id: z.number(),
   question: z.string(),
