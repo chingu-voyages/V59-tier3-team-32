@@ -23,11 +23,18 @@ const QuestionsContainer = ({
     };
 
     const handlePopState = () => {
-      if (
-        !isFinished &&
-        !confirm("You haven't completed the test. Leave anyway?")
-      ) {
-        window.history.pushState(null, "", window.location.pathname);
+      /**
+       * BUG: .back() re-triggers 'popstate', causing a second confirm dialog
+       * DECISION: Left as is to avoid complex history stack manipulation
+       * ALTERNATIVE: We can use .go(-2) but less reliable across entry points
+       */
+
+      if (!isFinished) {
+        if (confirm("You haven't completed the test. Leave anyway?")) {
+          window.history.back();
+        } else {
+          window.history.pushState(null, "", window.location.pathname);
+        }
       }
     };
 
