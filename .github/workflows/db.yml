@@ -4,13 +4,15 @@ on:
   pull_request:
     branches: [dev]
     paths:
-      - 'apps/server/**'
+      - 'apps/server/src/database/**'
+      - 'apps/server/drizzle.config.ts'
       - 'package*.json'
       - '.github/workflows/db.yml'
   push: 
     branches: [dev, main]
     paths:
-      - 'apps/server/**'
+      - 'apps/server/src/database/**'
+      - 'apps/server/drizzle.config.ts'
       - 'package*.json'
       - '.github/workflows/db.yml'
 
