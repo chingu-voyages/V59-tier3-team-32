@@ -1,0 +1,87 @@
+name: DB
+
+on:
+  pull_request:
+    branches: [dev]
+    paths:
+      - 'apps/server/src/database/**'
+      - 'apps/server/drizzle.config.ts'
+      - 'package*.json'
+      - '.github/workflows/db.yml'
+  push: 
+    branches: [dev, main]
+    paths:
+      - 'apps/server/src/database/**'
+      - 'apps/server/drizzle.config.ts'
+      - 'package*.json'
+      - '.github/workflows/db.yml'
+
+jobs: 
+  drift-check:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        include:
+          - branch: main
+            env_alias: "Production - v59-tier3-team-32-server" 
+          - branch: dev
+            env_alias: "Preview - v59-tier3-team-32-server"
+
+    environment: ${{ matrix.env_alias }}
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Check for migration drift
+        env: 
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          FRONTEND_ORIGIN: ${{ 'http://localhost:3000' }}
+          SERVER_PORT: ${{ '8080' }}
+
+        run: |
+          npm run db:generate
+          git diff --exit-code
+
+  migrate:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    needs: drift-check 
+
+    strategy:
+      matrix:
+        include:
+          - branch: main
+            env_alias: "Production - v59-tier3-team-32-server" 
+          - branch: dev
+            env_alias: "Preview - v59-tier3-team-32-server"
+
+    environment: ${{ matrix.env_alias }}
+
+    concurrency: 
+      group: migrate-${{ github.ref_name }}
+      cancel-in-progress: false
+  
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run DB migrations
+        if: github.ref_name == matrix.branch
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          FRONTEND_ORIGIN: ${{ 'http://localhost:3000' }}
+          SERVER_PORT: ${{ '8080' }}
+
+        run: npm run db:migrate

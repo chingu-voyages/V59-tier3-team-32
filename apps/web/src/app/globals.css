@@ -50,6 +50,7 @@
   --color-silver: var(--silver);
   --color-bronze: var(--bronze);
 }
+
 /* foreground is text color
 accent is hover state color
 destructive is eror color
