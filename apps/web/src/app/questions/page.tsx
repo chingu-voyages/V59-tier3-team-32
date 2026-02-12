@@ -1,4 +1,5 @@
 import { getFlashcardQuestions } from "@/lib/queries";
+import { redirect } from "next/navigation";
 import QuestionsContainer from "./QuestionsContainer";
 
 export default async function Questions({
@@ -7,6 +8,11 @@ export default async function Questions({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const role = (await searchParams).role;
+
+  if (typeof role !== "string") {
+    redirect("/roles");
+  }
+
   const roleDetails = await getFlashcardQuestions(role);
 
   return (
