@@ -42,6 +42,9 @@ jobs:
       - name: Check for migration drift
         env: 
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          FRONTEND_ORIGIN: ${{ 'http://localhost:3000' }}
+          SERVER_PORT: ${{ '8080' }}
+
         run: |
           npm run db:generate
           git diff --exit-code
@@ -78,4 +81,7 @@ jobs:
         if: github.ref_name == matrix.branch
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          FRONTEND_ORIGIN: ${{ 'http://localhost:3000' }}
+          SERVER_PORT: ${{ '8080' }}
+
         run: npm run db:migrate
