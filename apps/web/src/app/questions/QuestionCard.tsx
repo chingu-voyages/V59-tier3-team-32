@@ -36,10 +36,15 @@ const QuestionCard = ({
 
   if (isSubmitted) {
     return (
-      <div className="w-full max-w-4xl mx-auto px-8 py-14 bg-(--card-secondary) min-h-120 rounded-xl">
+      <article
+        className="w-full max-w-4xl mx-auto px-8 py-14 bg-(--card-secondary) min-h-120 rounded-xl"
+        aria-labelledby="rationale-heading"
+      >
         <div className="py-18 min-h-100 flex flex-col justify-center">
           <div className="flex items-center gap-4 pb-6">
-            <h2 className="text-2xl font-bold">Correct Answer:</h2>
+            <h2 id="rationale-heading" className="text-2xl font-bold">
+              Correct Answer:
+            </h2>
             <span className="text-3xl font-bold text-(--color-primary)">
               {flashcard.answer}
             </span>
@@ -60,17 +65,20 @@ const QuestionCard = ({
             </Button>
           </div>
         </div>
-      </div>
+      </article>
     );
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-13 bg-(--card-secondary) rounded-xl">
+    <article
+      className="w-full max-w-4xl mx-auto p-13 bg-(--card-secondary) rounded-xl"
+      aria-labelledby="question-title"
+    >
       <div className="flex justify-between items-center pb-8">
-        <h2 className="text-3xl font-semibold text-white">
+        <h2 id="question-title" className="text-3xl font-semibold text-white">
           Question {currentIndex + 1}
         </h2>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" aria-hidden="true">
           <span className="font-semibold text-xl">3</span>
           <BulbIcon />
         </div>
@@ -78,11 +86,17 @@ const QuestionCard = ({
 
       <p className="text-lg pb-8 tracking-wide">{flashcard.question}</p>
 
-      <ul className="pb-8 flex flex-col gap-y-4">
+      <ul
+        className="pb-8 flex flex-col gap-y-4"
+        role="radiogroup"
+        aria-label="Answer options"
+      >
         {options.map((opt) => (
           <li key={opt}>
             <button
+              role="radio"
               onClick={() => setSelectedOption(opt)}
+              aria-checked={selectedOption === opt}
               className={cn(
                 "w-full text-left p-4 rounded-lg border transition-all duration-300 flex items-center gap-4 group",
                 {
@@ -93,7 +107,10 @@ const QuestionCard = ({
                 },
               )}
             >
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center text-lg bg-[linear-gradient(180deg,#C178FD_0%,#5F82DBB3_100%)]">
+              <div
+                className="w-10 h-10 rounded-lg flex items-center justify-center text-lg bg-[linear-gradient(180deg,#C178FD_0%,#5F82DBB3_100%)]"
+                aria-hidden="true"
+              >
                 {opt}
               </div>
               <span className="tracking-wide">
@@ -115,7 +132,7 @@ const QuestionCard = ({
           Submit
         </Button>
       </div>
-    </div>
+    </article>
   );
 };
 
