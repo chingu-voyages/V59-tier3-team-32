@@ -3,7 +3,7 @@ import BulbIcon from "@/components/icons/BulbIcon";
 import { Button } from "@/components/ui/button";
 import { flashcardSchema } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import z from "zod";
 
 interface QuestionCardProps {
@@ -13,6 +13,8 @@ interface QuestionCardProps {
   onNext: (isCorrect: boolean) => void;
 }
 
+const options = ["A", "B", "C", "D"];
+
 const QuestionCard = ({
   flashcard,
   currentIndex,
@@ -21,13 +23,12 @@ const QuestionCard = ({
 }: QuestionCardProps) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const options = ["A", "B", "C", "D"];
 
-  const handleNextClick = () => {
+  const handleNextClick = useCallback(() => {
     onNext(selectedOption === flashcard.answer);
     setSelectedOption(null);
     setIsSubmitted(false);
-  };
+  }, [onNext, selectedOption, flashcard.answer]);
 
   const handleSubmit = () => {
     if (selectedOption) setIsSubmitted(true);
@@ -50,7 +51,7 @@ const QuestionCard = ({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedOption, isSubmitted, handleNextClick, options]);
+  }, [selectedOption, isSubmitted, handleNextClick]);
 
   if (isSubmitted) {
     return (
