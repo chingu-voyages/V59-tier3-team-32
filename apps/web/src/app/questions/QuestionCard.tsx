@@ -3,7 +3,7 @@ import BulbIcon from "@/components/icons/BulbIcon";
 import { Button } from "@/components/ui/button";
 import { flashcardSchema } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import z from "zod";
 
 interface QuestionCardProps {
@@ -21,10 +21,7 @@ const QuestionCard = ({
 }: QuestionCardProps) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = () => {
-    if (selectedOption) setIsSubmitted(true);
-  };
+  const options = ["A", "B", "C", "D"];
 
   const handleNextClick = () => {
     onNext(selectedOption === flashcard.answer);
@@ -32,7 +29,28 @@ const QuestionCard = ({
     setIsSubmitted(false);
   };
 
-  const options = ["A", "B", "C", "D"];
+  const handleSubmit = () => {
+    if (selectedOption) setIsSubmitted(true);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const key = e.key.toUpperCase();
+
+      // PREVENT SHORTCUTS IF USER IS TYPING IN AN INPUT
+      const activeTag = (document.activeElement as HTMLElement)?.tagName;
+      if (activeTag === "INPUT" || activeTag === "TEXTAREA") return;
+
+      if (isSubmitted && key === "ENTER") handleNextClick();
+
+      if (options.includes(key)) setSelectedOption(key);
+
+      if (key === "ENTER" && selectedOption) setIsSubmitted(true);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedOption, isSubmitted]);
 
   if (isSubmitted) {
     return (
@@ -94,7 +112,7 @@ const QuestionCard = ({
             <li key={opt}>
               <label
                 className={cn(
-                  "w-full text-left p-4 rounded-lg border transition-all duration-300 flex items-center gap-4 group",
+                  "w-full text-left p-4 rounded-lg border transition-all duration-300 flex items-center gap-4 group focus-within:ring focus-within:ring-(--color-secondary)",
                   {
                     "bg-(--color-selected) border-(--color-secondary)":
                       selectedOption === opt,
@@ -112,7 +130,7 @@ const QuestionCard = ({
                   className="sr-only"
                 />
                 <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center text-lg bg-[linear-gradient(180deg,#C178FD_0%,#5F82DBB3_100%)]"
+                  className="w-10 h-10 rounded-lg flex shrink-0 items-center justify-center text-lg bg-[linear-gradient(180deg,#C178FD_0%,#5F82DBB3_100%)]"
                   aria-hidden="true"
                 >
                   {opt}
