@@ -50,7 +50,7 @@ const QuestionCard = ({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedOption, isSubmitted]);
+  }, [selectedOption, isSubmitted, handleNextClick, options]);
 
   if (isSubmitted) {
     return (
