@@ -64,7 +64,7 @@ const QuestionsContainer = ({
   const progressPercentage = ((index + 1) / totalQuestions) * 100;
 
   return (
-    <section className="mx-auto max-w-304 py-16">
+    <div className="mx-auto max-w-304 py-16">
       <header className="flex items-center justify-between pb-8">
         <nav className="text-2xl" aria-label="Page navigation">
           <Link
@@ -80,10 +80,14 @@ const QuestionsContainer = ({
               }
             }}
           >
-            <ArrowLeft size={28} className="text-(--color-primary)" />
+            <ArrowLeft
+              size={28}
+              className="text-(--color-primary)"
+              aria-hidden="true"
+            />
             {isFinished && (
               <span className="text-sm text-(--custom-gray) font-light hover:underline">
-                {isFinished && "Back to home"}
+                Back to home
               </span>
             )}
           </Link>
@@ -135,7 +139,7 @@ const QuestionsContainer = ({
           <Summary results={results} />
         )}
       </div>
-    </section>
+    </div>
   );
 };
 

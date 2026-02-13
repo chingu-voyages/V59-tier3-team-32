@@ -28,7 +28,7 @@ const Summary = ({ results }: { results: boolean[] }) => {
         </p>
       </header>
 
-      <section className="pb-20" aria-label="Score statistics">
+      <div className="pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-[#0A6F4D99] rounded-xl p-8 flex flex-col items-center justify-center min-h-64">
             <span className="pb-6" aria-hidden="true">
@@ -50,9 +50,9 @@ const Summary = ({ results }: { results: boolean[] }) => {
             </p>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="pb-12" aria-label="Performance breakdown">
+      <section className="pb-12">
         <h3 className="text-2xl font-semibold pb-4" id="breakdown-title">
           Performance breakdown
         </h3>
@@ -61,6 +61,7 @@ const Summary = ({ results }: { results: boolean[] }) => {
           role="progressbar"
           aria-labelledby="breakdown-title"
           aria-valuenow={percentage}
+          aria-valuetext={`${percentage}% accuracy`}
           aria-valuemin={0}
           aria-valuemax={100}
         >
@@ -80,11 +81,11 @@ const Summary = ({ results }: { results: boolean[] }) => {
             </p>
           </div>
 
-          <nav aria-label="Leaderboard link">
+          <div>
             <Link href="#" className="text-[#9299D6] text-lg font-bold">
               View leaderboard
             </Link>
-          </nav>
+          </div>
         </div>
       </section>
 

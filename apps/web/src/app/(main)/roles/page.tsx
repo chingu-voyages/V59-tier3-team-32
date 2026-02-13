@@ -5,10 +5,7 @@ import roles from "./roles";
 export default function Roles() {
   return (
     <div className="min-h-screen bg-[#0F1425]">
-      <section
-        className="mx-auto max-w-304 px-8 py-16"
-        aria-labelledby="roles-heading"
-      >
+      <section className="mx-auto max-w-304 px-8 py-16">
         <header>
           <h1
             className="text-4xl font-semibold text-(--color-primary) pb-6 tracking-wide"

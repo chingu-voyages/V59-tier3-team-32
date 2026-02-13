@@ -86,40 +86,45 @@ const QuestionCard = ({
 
       <p className="text-lg pb-8 tracking-wide">{flashcard.question}</p>
 
-      <ul
-        className="pb-8 flex flex-col gap-y-4"
-        role="radiogroup"
-        aria-label="Answer options"
-      >
-        {options.map((opt) => (
-          <li key={opt}>
-            <button
-              role="radio"
-              onClick={() => setSelectedOption(opt)}
-              aria-checked={selectedOption === opt}
-              className={cn(
-                "w-full text-left p-4 rounded-lg border transition-all duration-300 flex items-center gap-4 group",
-                {
-                  "bg-(--color-selected) border-(--color-secondary)":
-                    selectedOption === opt,
-                  "bg-(--color-option) border-transparent hover:bg-gray-800/75 hover:border-(--color-secondary) cursor-pointer hover:gap-6":
-                    selectedOption !== opt,
-                },
-              )}
-            >
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center text-lg bg-[linear-gradient(180deg,#C178FD_0%,#5F82DBB3_100%)]"
-                aria-hidden="true"
+      <fieldset>
+        <legend className="sr-only">Answer options</legend>
+
+        <ul className="pb-8 flex flex-col gap-y-4">
+          {options.map((opt) => (
+            <li key={opt}>
+              <label
+                className={cn(
+                  "w-full text-left p-4 rounded-lg border transition-all duration-300 flex items-center gap-4 group",
+                  {
+                    "bg-(--color-selected) border-(--color-secondary)":
+                      selectedOption === opt,
+                    "bg-(--color-option) border-transparent hover:bg-gray-800/75 hover:border-(--color-secondary) cursor-pointer hover:gap-6":
+                      selectedOption !== opt,
+                  },
+                )}
               >
-                {opt}
-              </div>
-              <span className="tracking-wide">
-                {flashcard.options[opt as keyof typeof flashcard.options]}
-              </span>
-            </button>
-          </li>
-        ))}
-      </ul>
+                <input
+                  type="radio"
+                  name="answer"
+                  value={opt}
+                  checked={selectedOption === opt}
+                  onChange={() => setSelectedOption(opt)}
+                  className="sr-only"
+                />
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-lg bg-[linear-gradient(180deg,#C178FD_0%,#5F82DBB3_100%)]"
+                  aria-hidden="true"
+                >
+                  {opt}
+                </div>
+                <span className="tracking-wide">
+                  {flashcard.options[opt as keyof typeof flashcard.options]}
+                </span>
+              </label>
+            </li>
+          ))}
+        </ul>
+      </fieldset>
 
       <div className="flex justify-end">
         <Button
