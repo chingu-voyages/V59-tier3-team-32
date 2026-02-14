@@ -11,9 +11,9 @@
     "test:run": "vitest run"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "1.2.4",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
+    "embla-carousel-react": "8.6.0",
     "geist": "1.5.1",
     "lucide-react": "0.562.0",
     "next": "16.1.6",
