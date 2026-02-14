@@ -64,12 +64,13 @@ const QuestionsContainer = ({
   const progressPercentage = ((index + 1) / totalQuestions) * 100;
 
   return (
-    <section className="mx-auto max-w-304 py-16">
+    <div className="mx-auto max-w-304 py-16">
       <header className="flex items-center justify-between pb-8">
-        <nav className="text-2xl">
+        <nav className="text-2xl" aria-label="Page navigation">
           <Link
             href="/"
             className="flex gap-x-2 items-center"
+            aria-label={isFinished ? "Back to home" : "Exit quiz"}
             onClick={(e) => {
               if (
                 !isFinished &&
@@ -79,10 +80,14 @@ const QuestionsContainer = ({
               }
             }}
           >
-            <ArrowLeft size={28} className="text-(--color-primary)" />
+            <ArrowLeft
+              size={28}
+              className="text-(--color-primary)"
+              aria-hidden="true"
+            />
             {isFinished && (
               <span className="text-sm text-(--custom-gray) font-light hover:underline">
-                {isFinished && "Back to home"}
+                Back to home
               </span>
             )}
           </Link>
@@ -90,25 +95,38 @@ const QuestionsContainer = ({
         <h1 className="text-4xl font-semibold text-(--color-primary)">
           {isFinished ? "Summary" : roleDetails.role}
         </h1>
-        <span className={cn(isFinished ? "w-28" : "w-7")} />
+        <span className={cn(isFinished ? "w-28" : "w-7")} aria-hidden="true" />
       </header>
+
       {!isFinished && (
-        <section className="p-6 max-w-5xl mx-auto">
+        <div className="p-6 max-w-5xl mx-auto">
           <div className="flex flex-col gap-y-3">
-            <div className="w-full bg-(--color-card) h-3">
+            <div
+              className="w-full bg-(--color-card) h-3"
+              role="progressbar"
+              aria-label="Quiz progress"
+              aria-valuenow={Math.round(progressPercentage)}
+              aria-valuetext={`${index + 1} of ${totalQuestions}`}
+              aria-valuemin={0}
+              aria-valuemax={100}
+            >
               <div
                 className="bg-(--color-primary-dark) h-3 rounded-sm transition-all duration-300"
                 style={{ width: `${progressPercentage}%` }}
               ></div>
             </div>
-            <p className="text-right text-(--color-secondary)">
-              Questions {index + 1} / {totalQuestions}
+            <p
+              className="text-right text-(--color-secondary)"
+              aria-live="polite"
+            >
+              <span className="sr-only">Questions</span> {index + 1} /{" "}
+              {totalQuestions}
             </p>
           </div>
-        </section>
+        </div>
       )}
 
-      <main className="flex items-center justify-center py-10">
+      <div className="flex items-center justify-center py-10">
         {!isFinished ? (
           <QuestionCard
             key={index}
@@ -120,8 +138,8 @@ const QuestionsContainer = ({
         ) : (
           <Summary results={results} />
         )}
-      </main>
-    </section>
+      </div>
+    </div>
   );
 };
 

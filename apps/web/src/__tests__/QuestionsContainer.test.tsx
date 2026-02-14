@@ -26,7 +26,7 @@ describe("QuestionsContainer", () => {
     const correctBtn = screen.getByRole("button", { name: "Correct" });
     fireEvent.click(correctBtn);
 
-    expect(screen.getByText(/Questions 2 \/ 2/i)).toBeInTheDocument();
+    expect(await screen.findByText(/2 \/ 2/)).toBeInTheDocument();
 
     const incorrectBtn = screen.getByRole("button", { name: "Incorrect" });
     fireEvent.click(incorrectBtn);

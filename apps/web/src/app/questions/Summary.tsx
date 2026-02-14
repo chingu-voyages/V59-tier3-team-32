@@ -12,13 +12,15 @@ const Summary = ({ results }: { results: boolean[] }) => {
   const percentage = Math.round((correctCount / results.length) * 100);
 
   return (
-    <div>
+    <article aria-labelledby="summary-title">
       <header className="pb-24">
         <div className="flex items-center gap-3 pb-4">
-          <span>
+          <span aria-hidden="true">
             <CopunIcon />
           </span>
-          <h1 className="text-4xl font-bold">Interview completed!</h1>
+          <h2 className="text-4xl font-bold" id="summary-title">
+            Interview completed!
+          </h2>
         </div>
         <p className="tracking-wide text-lg font-light text-(--custom-gray)">
           Interview completed! Review your answers to learn from your
@@ -26,36 +28,42 @@ const Summary = ({ results }: { results: boolean[] }) => {
         </p>
       </header>
 
-      <section className="pb-20">
+      <div className="pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <article className="bg-[#0A6F4D99] rounded-xl p-8 flex flex-col items-center justify-center min-h-64">
-            <span className="pb-6">
+          <div className="bg-[#0A6F4D99] rounded-xl p-8 flex flex-col items-center justify-center min-h-64">
+            <span className="pb-6" aria-hidden="true">
               <SmileyIcon />
             </span>
             <p className="text-2xl font-light tracking-wide text-center">
               Correct answers:{" "}
               <strong className="text-white">{correctCount}</strong>
             </p>
-          </article>
+          </div>
 
-          <article className="bg-[#AD404099] rounded-xl p-8 flex flex-col items-center justify-center min-h-64">
-            <span className="pb-6">
+          <div className="bg-[#AD404099] rounded-xl p-8 flex flex-col items-center justify-center min-h-64">
+            <span className="pb-6" aria-hidden="true">
               <SmileySadIcon />
             </span>
             <p className="text-2xl font-light tracking-wide text-center">
               Wrong answers:{" "}
               <strong className="text-white">{incorrectCount}</strong>
             </p>
-          </article>
+          </div>
         </div>
-      </section>
+      </div>
 
       <section className="pb-12">
-        <h2 className="text-2xl font-semibold pb-4">Performance breakdown</h2>
-
+        <h3 className="text-2xl font-semibold pb-4" id="breakdown-title">
+          Performance breakdown
+        </h3>
         <div
           className="bg-slate-700/50 rounded-sm h-3 overflow-hidden border border-[#848A89]"
           role="progressbar"
+          aria-labelledby="breakdown-title"
+          aria-valuenow={percentage}
+          aria-valuetext={`${percentage}% accuracy`}
+          aria-valuemin={0}
+          aria-valuemax={100}
         >
           <div
             className="bg-[#0D9467] h-full"
@@ -73,16 +81,16 @@ const Summary = ({ results }: { results: boolean[] }) => {
             </p>
           </div>
 
-          <nav>
+          <div>
             <Link href="#" className="text-[#9299D6] text-lg font-bold">
               View leaderboard
             </Link>
-          </nav>
+          </div>
         </div>
       </section>
 
       <aside className="flex items-center gap-4 pb-16">
-        <span>
+        <span aria-hidden="true">
           <StarIcon />
         </span>
         <p className="text-[#848488]">
@@ -103,7 +111,7 @@ const Summary = ({ results }: { results: boolean[] }) => {
           <Link href="/roles">Take another interview</Link>
         </Button>
       </footer>
-    </div>
+    </article>
   );
 };
 
