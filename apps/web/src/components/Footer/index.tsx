@@ -1,4 +1,16 @@
+"use client";
+
+import Autoplay from "embla-carousel-autoplay";
+import { useState } from "react";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import members from "./members.json";
 
 export default function Footer() {
@@ -33,6 +45,10 @@ export default function Footer() {
 }
 
 function MembersList({ members }: { members: Member[] }) {
+  const [startIndex] = useState(() =>
+    Math.floor(Math.random() * members.length),
+  );
+
   return (
     <section
       className="flex flex-col gap-8 py-8"
@@ -42,12 +58,32 @@ function MembersList({ members }: { members: Member[] }) {
         Team Members
       </h2>
 
-      <ul className="flex flex-wrap justify-center gap-9">
-        {members.map((member) => (
-          <li key={member.href}>
-            <Member member={member} />
-          </li>
-        ))}
+      <ul className="w-[calc(100% - 4.5rem)] mx-16">
+        <Carousel
+          plugins={[Autoplay()]}
+          opts={{
+            align: "center",
+            loop: true,
+            skipSnaps: true,
+            slidesToScroll: "auto",
+            startIndex,
+          }}
+        >
+          <CarouselPrevious variant="ghost" />
+          <CarouselNext variant="ghost" />
+          <CarouselContent className="-ml-9" aria-live="polite">
+            {members.map((member) => (
+              <CarouselItem
+                key={member.href}
+                className="pl-9 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+              >
+                <li className="w-max mx-auto">
+                  <Member member={member} />
+                </li>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </ul>
     </section>
   );
@@ -55,8 +91,13 @@ function MembersList({ members }: { members: Member[] }) {
 
 function Member({ member }: { member: Member }) {
   return (
-    <a href={member.href} target="_blank" rel="noopener noreferrer">
-      <figure className="flex flex-col items-center gap-2">
+    <figure className="w-max whitespace-nowrap">
+      <a
+        className="flex flex-col items-center gap-2"
+        href={member.href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Avatar className="w-18 h-18">
           <AvatarImage src={member.src} alt="" />
           <AvatarFallback aria-hidden>{member.name[0]}</AvatarFallback>
@@ -65,8 +106,8 @@ function Member({ member }: { member: Member }) {
           <p>{member.name}</p>
           <p className="text-primary text-sm font-light">{member.role}</p>
         </figcaption>
-      </figure>
-    </a>
+      </a>
+    </figure>
   );
 }
 

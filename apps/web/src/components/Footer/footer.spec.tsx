@@ -1,8 +1,30 @@
 import { cleanup, render, screen, within } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import Footer from "./";
 import members from "./members.json";
+
+/**
+ * Structural fake for the carousel.
+ * Renders children and exposes navigation buttons.
+ */
+vi.mock("@/components/ui/carousel", async () => {
+  const React = await import("react");
+
+  return {
+    Carousel: ({ children }: { children: React.ReactNode }) => (
+      <div data-testid="carousel">{children}</div>
+    ),
+    CarouselContent: ({ children }: { children: React.ReactNode }) => (
+      <div>{children}</div>
+    ),
+    CarouselItem: ({ children }: { children: React.ReactNode }) => (
+      <div>{children}</div>
+    ),
+    CarouselPrevious: () => <button aria-label="Previous slide">Prev</button>,
+    CarouselNext: () => <button aria-label="Next slide">Next</button>,
+  };
+});
 
 describe("Footer", () => {
   it("renders team members with their roles and links", () => {
@@ -35,6 +57,19 @@ describe("Footer", () => {
 
     const currentYear = new Date().getFullYear();
     expect(screen.getByText(currentYear.toString())).toBeVisible();
+  });
+
+  it("exposes carousel navigation controls", () => {
+    render(<Footer />);
+
+    const buttons = screen.getAllByRole("button");
+    expect(buttons.length).toBeGreaterThanOrEqual(2);
+
+    expect(
+      screen.getByRole("button", { name: /previous slide/i }),
+    ).toBeVisible();
+
+    expect(screen.getByRole("button", { name: /next slide/i })).toBeVisible();
   });
 });
 
