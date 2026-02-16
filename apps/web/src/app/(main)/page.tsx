@@ -56,11 +56,7 @@ const Hero = () => {
           turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec
           fringilla accumsan.
         </p>
-        <Link
-          href="/questions"
-          aria-label="Start interview knowledge test"
-          className="px-3 py-3 bg-[#B256FC] rounded-sm"
-        >
+        <Link href="/questions" className="px-3 py-3 bg-[#B256FC] rounded-sm">
           Test your knowledge
         </Link>
       </div>
