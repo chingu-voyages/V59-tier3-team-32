@@ -56,14 +56,19 @@ const Hero = () => {
           turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec
           fringilla accumsan.
         </p>
-        <Link href="/questions" className="px-3 py-3 bg-[#B256FC] rounded-sm">
+        <Link
+          href="/questions"
+          className="px-3 py-3 bg-[#B256FC] rounded-sm focus:bg-accent focus:outline-none focus:ring-2 focus:ring-white 
+         transition-colors duration-200 hover:bg-accent
+         text-white font-semibold inline-flex items-center gap-2  "
+        >
           Test your knowledge
         </Link>
       </div>
 
       <Image
         src="/hero_illustration.svg"
-        alt="Hero Image"
+        alt="People preparing for an interview"
         className="md:ml-auto max-w-75 lg:max-w-none"
         width={500}
         height={554}
@@ -102,7 +107,8 @@ const About = () => {
           >
             <Image
               src={item.icon}
-              alt={item.title}
+              alt=""
+              aria-hidden="true"
               className="w-12.5 h-12.5"
               width={50}
               height={50}
@@ -222,7 +228,7 @@ const Explore = () => {
 
       <Link
         href="/roles"
-        className="text-[16px] text-primary font-semibold text-center "
+        className="text-[16px] text-primary font-semibold text-center focus:underline focus:outline-none  "
       >
         View more roles <ArrowRight className="inline-block ml-2" />
       </Link>
@@ -255,7 +261,8 @@ const SectionHeading = ({
 
       <Image
         src="/about_stars.svg"
-        alt="About Image"
+        alt=""
+        aria-hidden="true"
         width={174}
         height={102}
         className=""
