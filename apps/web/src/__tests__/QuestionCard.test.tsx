@@ -31,9 +31,7 @@ describe("QuestionCard", () => {
 
     const actions = {
       selectOption: async (text: string) => {
-        const option = screen.getByRole("button", {
-          name: new RegExp(text, "i"),
-        });
+        const option = screen.getByText(new RegExp(text, "i"));
         await user.click(option);
       },
       submit: async () =>
