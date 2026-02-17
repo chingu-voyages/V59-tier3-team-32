@@ -33,7 +33,10 @@ const Summary = ({ results }: { results: boolean[] }) => {
 
       <div className="pb-12 sm:pb-16 md:pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-          <div className="bg-[#0A6F4D99] rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center min-h-48 sm:min-h-56 md:min-h-64">
+          <div
+            className={`bg-[#0A6F4D99] rounded-xl p-6 sm:p-8 flex flex-col items-center 
+            justify-center min-h-48 sm:min-h-56 md:min-h-64`}
+          >
             <span className="pb-4 sm:pb-6" aria-hidden="true">
               <SmileyIcon />
             </span>
@@ -43,7 +46,10 @@ const Summary = ({ results }: { results: boolean[] }) => {
             </p>
           </div>
 
-          <div className="bg-[#AD404099] rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center min-h-48 sm:min-h-56 md:min-h-64 ">
+          <div
+            className={`bg-[#AD404099] rounded-xl p-6 sm:p-8 flex flex-col
+            items-center justify-center min-h-48 sm:min-h-56 md:min-h-64 `}
+          >
             <span className="pb-4 sm:pb-6" aria-hidden="true">
               <SmileySadIcon />
             </span>

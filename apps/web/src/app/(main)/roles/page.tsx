@@ -8,12 +8,16 @@ export default function Roles() {
       <section className="mx-auto max-w-304 px-4 sm:px-8 py-8 sm:py-16">
         <header>
           <h1
-            className="text-2xl sm:text-3xl md:text-4xl font-semibold text-(--color-primary) pb-4 sm:pb-6 tracking-wide"
+            className={`text-2xl sm:text-3xl md:text-4xl font-semibold text-(--color-primary)
+              pb-4 sm:pb-6 tracking-wide`}
             id="roles-heading"
           >
             Choose your role to start!
           </h1>
-          <p className="text-white font-light max-w-3xl pb-8 sm:pb-12 leading-tight tracking-wide text-sm sm:text-base">
+          <p
+            className={`text-white font-light max-w-3xl pb-8 sm:pb-12 leading-tight 
+            tracking-wide text-sm sm:text-base`}
+          >
             Each role includes questions from different categories. You can
             continue by choosing the role that suits you best.
           </p>
@@ -60,14 +64,17 @@ export default function Roles() {
                     >
                       <Button
                         variant="outline"
-                        className="flex-1 py-5 sm:py-6 cursor-pointer border-(--custom-gray) hover:text-(--custom-gray) text-(--custom-gray) hover:bg-transparent bg-transparent text-sm sm:text-base"
+                        className={`flex-1 py-5 sm:py-6 cursor-pointer border-(--custom-gray) 
+                          hover:text-(--custom-gray) text-(--custom-gray) hover:bg-transparent 
+                          bg-transparent text-sm sm:text-base`}
                         aria-label={`View leaderboard for ${role.title}`}
                       >
                         View Leaderboard
                       </Button>
                       <Button
                         asChild
-                        className="flex-1 py-5 sm:py-6 bg-(--color-secondary) cursor-pointer hover:bg-purple-700 text-white text-sm sm:text-base"
+                        className={`flex-1 py-5 sm:py-6 bg-(--color-secondary) cursor-pointer
+                          hover:bg-purple-700 text-white text-sm sm:text-base`}
                       >
                         <Link
                           href={`/questions?role=${role.slug}`}

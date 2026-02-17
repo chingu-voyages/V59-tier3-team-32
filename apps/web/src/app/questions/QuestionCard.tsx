@@ -56,7 +56,8 @@ const QuestionCard = ({
   if (isSubmitted) {
     return (
       <article
-        className="w-full max-w-4xl mx-auto px-7 md:px-8 py-8 sm:py-14 bg-(--card-secondary) min-h-120 rounded-xl"
+        className={`w-full max-w-4xl mx-auto px-7 md:px-8 py-8 sm:py-14
+          bg-(--card-secondary) min-h-120 rounded-xl`}
         aria-labelledby="rationale-heading"
       >
         <div className="py-18 min-h-100 flex flex-col justify-center">
@@ -72,14 +73,18 @@ const QuestionCard = ({
             </span>
           </div>
 
-          <p className="text-(--custom-gray) text-base sm:text-lg font-light tracking-wide leading-relaxed pb-6 sm:pb-8">
+          <p
+            className={`text-(--custom-gray) text-base sm:text-lg font-light 
+            tracking-wide leading-relaxed pb-6 sm:pb-8`}
+          >
             {flashcard.rationale}
           </p>
 
           <div className="mt-auto flex justify-end">
             <Button
               onClick={handleNextClick}
-              className="bg-(--color-secondary) hover:bg-(--color-primary-dark) tracking-wide px-6 sm:px-10 py-3 sm:py-5 font-semibold transition-colors cursor-pointer"
+              className={`bg-(--color-secondary) hover:bg-(--color-primary-dark) 
+                tracking-wide px-6 sm:px-10 py-3 sm:py-5 font-semibold transition-colors cursor-pointer`}
             >
               {currentIndex === totalQuestions - 1
                 ? "View performance"
@@ -121,7 +126,8 @@ const QuestionCard = ({
             <li key={opt}>
               <label
                 className={cn(
-                  "w-full text-left p-3 sm:p-4 rounded-lg border transition-all duration-300 flex items-center gap-3 sm:gap-4 group focus-within:ring focus-within:ring-(--color-secondary)",
+                  "w-full text-left p-3 sm:p-4 rounded-lg border transition-all duration-300 flex",
+                  "items-center gap-3 sm:gap-4 group focus-within:ring focus-within:ring-(--color-secondary)",
                   {
                     "bg-(--color-selected) border-(--color-secondary)":
                       selectedOption === opt,
@@ -139,7 +145,9 @@ const QuestionCard = ({
                   className="sr-only"
                 />
                 <div
-                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex shrink-0 items-center justify-center text-sm sm:text-lg bg-[linear-gradient(180deg,#C178FD_0%,#5F82DBB3_100%)]"
+                  className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex shrink-0 
+                    items-center justify-center text-sm sm:text-lg 
+                    bg-[linear-gradient(180deg,#C178FD_0%,#5F82DBB3_100%)]`}
                   aria-hidden="true"
                 >
                   {opt}

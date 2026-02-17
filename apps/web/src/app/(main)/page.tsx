@@ -7,20 +7,20 @@ const aboutUs = [
   {
     icon: "/icons/checkmark.svg",
     title: "honest",
-    description:
-      "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Clh",
+    description: `Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate 
+      libero et velit interdum, ac aliquet odio mattis. Clh`,
   },
   {
     icon: "/icons/peace.svg",
     title: "powerful results",
-    description:
-      "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Clh",
+    description: `Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate
+      libero et velit interdum, ac aliquet odio mattis. Clh`,
   },
   {
     icon: "/icons/handshake.svg",
     title: "smarter preparation",
-    description:
-      "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Clh",
+    description: `Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate
+      libero et velit interdum, ac aliquet odio mattis. Clh`,
   },
 ];
 
@@ -41,8 +41,9 @@ const Hero = () => {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="p-4 lg:py-6.25 md:px-15 lg:px-0 flex flex-col md:grid md:grid-cols-2 lg:col-span-[524px] 
-    items-center justify-between space-y-12 lg:gap-2.5 lg:pt-26.75 md:mx-auto lg:max-w-[85%]"
+      className="p-4 lg:py-6.25 md:px-15 lg:px-0 flex flex-col md:grid md:grid-cols-2 
+      lg:col-span-[524px] items-center justify-between space-y-12 lg:gap-2.5 
+      lg:pt-26.75 md:mx-auto lg:max-w-[85%]"
     >
       <div className="w-full max-w-131 lg:space-y-8 space-y-6 text-center lg:text-left">
         <h1
@@ -58,9 +59,10 @@ const Hero = () => {
         </p>
         <Link
           href="/questions"
-          className="px-3 py-3 bg-[#B256FC] rounded-sm focus:bg-accent focus:outline-none focus:ring-2 focus:ring-white 
-         transition-colors duration-200 hover:bg-accent
-         text-white font-semibold inline-flex items-center gap-2  "
+          aria-label="Test your knowledge by answering interview questions"
+          className="px-3 py-3 bg-[#B256FC] rounded-sm focus:bg-accent focus:outline-none 
+          focus:ring-2 focus:ring-white transition-colors duration-200 hover:bg-accent
+         text-white font-semibold inline-flex items-center gap-2"
         >
           Test your knowledge
         </Link>
@@ -98,12 +100,17 @@ const About = () => {
         className="lg:pt-52.25 pt-20 text-primary"
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 space-y-10 lg:space-y-0 lg:gap-8 z-1 md:mx-auto lg:w-[85%] px-4 lg:px-0">
+      <div
+        className={`grid grid-cols-1 lg:grid-cols-3 space-y-10 lg:space-y-0
+        lg:gap-8 z-1 md:mx-auto lg:w-[85%] px-4 lg:px-0`}
+      >
         {aboutUs.map((item, index) => (
           <div
-            key={index}
-            className="w-full bg-[#161c2f] rounded-sm py-10 px-6 flex flex-col items-center space-y-4
-             text-center z-1 hover:ring-1 ring-primary hover:drop-shadow-[#b256fc] hover:drop-shadow-md "
+            key={index + 1}
+            role="article"
+            className={`w-full bg-[#161c2f] rounded-sm py-10 px-6 flex flex-col 
+              items-center space-y-4 text-center z-1 hover:ring-1 ring-primary
+              hover:drop-shadow-[#b256fc] hover:drop-shadow-md`}
           >
             <Image
               src={item.icon}
@@ -113,7 +120,10 @@ const About = () => {
               width={50}
               height={50}
             />
-            <h3 className="text-[28px] font-semibold 3xl:text-4xl capitalize">
+            <h3
+              className="text-[28px] font-semibold 3xl:text-4xl capitalize"
+              id={`about-title-${index + 1}`}
+            >
               {item.title}
             </h3>
             <p className="3xl:text-lg">{item.description}</p>
@@ -145,7 +155,10 @@ const Process = () => {
         height={800}
       />
 
-      <ul className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:items-start  mx-auto mt-8 lg:max-w-[80%] ">
+      <ol
+        className={`grid grid-cols-1 gap-10 lg:grid-cols-3 lg:items-start
+        mx-auto mt-8 lg:max-w-[80%]`}
+      >
         {processSteps.map((step, index) => (
           <li
             key={index}
@@ -160,8 +173,9 @@ const Process = () => {
                 className="
                   absolute inset-0 rounded-full p-px"
                 style={{
-                  background:
-                    "linear-gradient(180deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0) -42.59%, #CB8DE8 -42.58%, rgba(203, 143, 232, 0.18) 4.35%, rgba(151, 60, 68, 0.055) 99.99%, rgba(199, 137, 228, 0) 100%)",
+                  background: `linear-gradient(180deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0) 
+                    -42.59%, #CB8DE8 -42.58%, rgba(203, 143, 232, 0.18) 4.35%,
+                    rgba(151, 60, 68, 0.055) 99.99%, rgba(199, 137, 228, 0) 100%)`,
                 }}
               >
                 <span className="block h-full w-full rounded-full bg-[#1a0238]" />
@@ -172,8 +186,8 @@ const Process = () => {
                   absolute inset-px rounded-full
                 "
                 style={{
-                  background:
-                    "radial-gradient(111.14% 111.14% at 8.37% 0%, rgba(255, 255, 255, 0.36) 0%, rgba(255, 255, 255, 0) 100%)",
+                  background: `radial-gradient(111.14% 111.14% at 8.37% 0%, rgba(255, 255, 255, 0.36) 
+                    0%, rgba(255, 255, 255, 0) 100%)`,
                 }}
               />
 
@@ -182,12 +196,15 @@ const Process = () => {
               </span>
             </span>
 
-            <span className="text-[20px]  leading-tight transition-colors duration-200 group-hover:text-[#b256fc]">
+            <span
+              className={`text-[20px]  leading-tight transition-colors duration-200
+              group-hover:text-[#b256fc]`}
+            >
               {step}
             </span>
           </li>
         ))}
-      </ul>
+      </ol>
     </section>
   );
 };
@@ -204,15 +221,19 @@ const Explore = () => {
         className="pb-20 lg:pb-28 text-primary"
       />
 
-      <ul className="px-4 md:mx-auto lg:w-[85%] lg:px-0 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-x-10 pb-16">
+      <ul
+        className={`px-4 md:mx-auto lg:w-[85%] lg:px-0 grid grid-cols-1 
+        md:grid-cols-3 gap-4 lg:gap-x-10 pb-16`}
+      >
         {Array.from({ length: 3 }).map((_, index) => (
           <li
             key={index}
-            className="flex flex-col py-9 px-16.5 rounded-md items-center justify-center space-y-6 hover:ring-1 
-            ring-primary "
+            className={`flex flex-col py-9 px-16.5 rounded-md items-center
+              justify-center space-y-6 hover:ring-1 ring-primary`}
             style={{
-              background:
-                "linear-gradient(180deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0) -42.59%, #CB8DE8 -42.58%, rgba(203, 143, 232, 0.18) 4.35%, rgba(151, 60, 68, 0.055) 99.99%, rgba(199, 137, 228, 0) 100%)",
+              background: `linear-gradient(180deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0) -42.59%,
+                #CB8DE8 -42.58%, rgba(203, 143, 232, 0.18) 4.35%, rgba(151, 60, 68, 0.055)
+                99.99%, rgba(199, 137, 228, 0) 100%)`,
             }}
           >
             <h3 className="text-[24px] text-center">UI/UX Designer</h3>
@@ -228,7 +249,7 @@ const Explore = () => {
 
       <Link
         href="/roles"
-        className="text-[16px] text-primary font-semibold text-center focus:underline focus:outline-none  "
+        className="text-[16px] text-primary font-semibold text-center focus:underline focus:outline-none"
       >
         View more roles <ArrowRight className="inline-block ml-2" />
       </Link>
