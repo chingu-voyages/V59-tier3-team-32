@@ -64,8 +64,8 @@ const QuestionsContainer = ({
   const progressPercentage = ((index + 1) / totalQuestions) * 100;
 
   return (
-    <div className="mx-auto max-w-304 py-16">
-      <header className="flex items-center justify-between pb-8">
+    <div className="mx-auto max-w-304 py-8 sm:py-12 md:py-16 px-8 sm-px-10">
+      <header className="flex items-center justify-between pb-6 sm:pb-8">
         <nav className="text-2xl" aria-label="Page navigation">
           <Link
             href="/"
@@ -81,28 +81,31 @@ const QuestionsContainer = ({
             }}
           >
             <ArrowLeft
-              size={28}
-              className="text-(--color-primary)"
+              size={24}
+              className="text-(--color-primary) sm:w-7 sm:h-7"
               aria-hidden="true"
             />
             {isFinished && (
-              <span className="text-sm text-(--custom-gray) font-light hover:underline">
+              <span className="hidden sm:block text-xs sm:text-sm text-(--custom-gray) font-light hover:underline">
                 Back to home
               </span>
             )}
           </Link>
         </nav>
-        <h1 className="text-4xl font-semibold text-(--color-primary)">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-(--color-primary) text-center flex-1 sm:flex-none">
           {isFinished ? "Summary" : roleDetails.role}
         </h1>
-        <span className={cn(isFinished ? "w-28" : "w-7")} aria-hidden="true" />
+        <span
+          className={cn(isFinished ? "w-6 sm:w-28" : "w-6 sm:w-7")}
+          aria-hidden="true"
+        />
       </header>
 
       {!isFinished && (
-        <div className="p-6 max-w-5xl mx-auto">
-          <div className="flex flex-col gap-y-3">
+        <div className="p-4 sm:p-6 max-w-5xl mx-auto">
+          <div className="flex flex-col gap-y-2 sm:gap-y-3">
             <div
-              className="w-full bg-(--color-card) h-3"
+              className="w-full bg-(--color-card) h-2 sm:h-3"
               role="progressbar"
               aria-label="Quiz progress"
               aria-valuenow={Math.round(progressPercentage)}
@@ -111,12 +114,12 @@ const QuestionsContainer = ({
               aria-valuemax={100}
             >
               <div
-                className="bg-(--color-primary-dark) h-3 rounded-sm transition-all duration-300"
+                className="bg-(--color-primary-dark) h-2 sm:h-3 rounded-sm transition-all duration-300"
                 style={{ width: `${progressPercentage}%` }}
               ></div>
             </div>
             <p
-              className="text-right text-(--color-secondary)"
+              className="text-right text-(--color-secondary) text-sm sm:text-base"
               aria-live="polite"
             >
               <span className="sr-only">Questions</span> {index + 1} /{" "}
@@ -126,7 +129,7 @@ const QuestionsContainer = ({
         </div>
       )}
 
-      <div className="flex items-center justify-center py-10">
+      <div className="flex items-center justify-center py-7 sm:py-8 md:py-10">
         {!isFinished ? (
           <QuestionCard
             key={index}
