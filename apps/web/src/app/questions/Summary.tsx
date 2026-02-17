@@ -13,38 +13,41 @@ const Summary = ({ results }: { results: boolean[] }) => {
 
   return (
     <article aria-labelledby="summary-title">
-      <header className="pb-24">
-        <div className="flex items-center gap-3 pb-4">
+      <header className="pb-12 sm:pb-16 md:pb-24">
+        <div className="flex items-center gap-2 sm:gap-3 pb-3 md:pb-4">
           <span aria-hidden="true">
             <CopunIcon />
           </span>
-          <h2 className="text-4xl font-bold" id="summary-title">
+          <h2
+            className="text-2xl sm:text-3xl md:text-4xl font-bold"
+            id="summary-title"
+          >
             Interview completed!
           </h2>
         </div>
-        <p className="tracking-wide text-lg font-light text-(--custom-gray)">
+        <p className="tracking-wide text-sm sm:text-base md:text-lg font-light text-(--custom-gray)">
           Interview completed! Review your answers to learn from your
           performance
         </p>
       </header>
 
-      <div className="pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-[#0A6F4D99] rounded-xl p-8 flex flex-col items-center justify-center min-h-64">
-            <span className="pb-6" aria-hidden="true">
+      <div className="pb-12 sm:pb-16 md:pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+          <div className="bg-[#0A6F4D99] rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center min-h-48 sm:min-h-56 md:min-h-64">
+            <span className="pb-4 sm:pb-6" aria-hidden="true">
               <SmileyIcon />
             </span>
-            <p className="text-2xl font-light tracking-wide text-center">
+            <p className="text-lg sm:text-xl md:text-2xl font-light tracking-wide text-center">
               Correct answers:{" "}
               <strong className="text-white">{correctCount}</strong>
             </p>
           </div>
 
-          <div className="bg-[#AD404099] rounded-xl p-8 flex flex-col items-center justify-center min-h-64">
-            <span className="pb-6" aria-hidden="true">
+          <div className="bg-[#AD404099] rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center min-h-48 sm:min-h-56 md:min-h-64 ">
+            <span className="pb-4 sm:pb-6" aria-hidden="true">
               <SmileySadIcon />
             </span>
-            <p className="text-2xl font-light tracking-wide text-center">
+            <p className="text-lg sm:text-xl md:text-2xl font-light tracking-wide text-center">
               Wrong answers:{" "}
               <strong className="text-white">{incorrectCount}</strong>
             </p>
@@ -52,12 +55,15 @@ const Summary = ({ results }: { results: boolean[] }) => {
         </div>
       </div>
 
-      <section className="pb-12">
-        <h3 className="text-2xl font-semibold pb-4" id="breakdown-title">
+      <section className="pb-8 sm:pb-10 md:pb-12">
+        <h3
+          className="text-xl sm:text-2xl font-semibold pb-3 sm:pb-4 text-center sm:text-left"
+          id="breakdown-title"
+        >
           Performance breakdown
         </h3>
         <div
-          className="bg-slate-700/50 rounded-sm h-3 overflow-hidden border border-[#848A89]"
+          className="bg-slate-700/50 rounded-sm h-2 sm:h-3 overflow-hidden border border-[#848A89]"
           role="progressbar"
           aria-labelledby="breakdown-title"
           aria-valuenow={percentage}
@@ -71,18 +77,21 @@ const Summary = ({ results }: { results: boolean[] }) => {
           />
         </div>
 
-        <div className="flex items-center justify-between pt-8">
-          <div className="flex items-center gap-6">
-            <p className="text-2xl font-bold text-[#10B981]">
+        <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-6 pt-6 sm:pt-8">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
+            <p className="text-xl sm:text-2xl font-bold text-[#10B981]">
               Accuracy: {percentage}%
             </p>
-            <p className="font-light">
+            <p className="font-light text-sm sm:text-base">
               Your level: <span className="text-(--custom-gray)">Medium</span>
             </p>
           </div>
 
           <div>
-            <Link href="#" className="text-[#9299D6] text-lg font-bold">
+            <Link
+              href="#"
+              className="text-[#9299D6] text-base sm:text-lg font-bold underline sm:no-underline sm:hover:underline"
+            >
               View leaderboard
             </Link>
           </div>
@@ -90,10 +99,10 @@ const Summary = ({ results }: { results: boolean[] }) => {
       </section>
 
       <aside className="flex items-center gap-4 pb-16">
-        <span aria-hidden="true">
+        <span aria-hidden="true" className="shrink-0 mt-1 sm:mt-0">
           <StarIcon />
         </span>
-        <p className="text-[#848488]">
+        <p className="text-[#848488] text-sm sm:text-base">
           Great job! You&apos;ve successfully completed the interview. You can
           share your score on social media.
         </p>
@@ -106,7 +115,7 @@ const Summary = ({ results }: { results: boolean[] }) => {
 
         <Button
           asChild
-          className="bg-(--color-secondary) hover:bg-(--color-primary-dark) py-5.5"
+          className="bg-(--color-secondary) hover:bg-(--color-primary-dark) text-xs sm:text-sm py-5.5"
         >
           <Link href="/roles">Take another interview</Link>
         </Button>
