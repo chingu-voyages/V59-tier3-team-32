@@ -9,6 +9,7 @@
         "lib": [
             "ES2023"
         ],
+        "rewriteRelativeImportExtensions": true,
         "strict": true,
         "noUncheckedIndexedAccess": true,
         "noImplicitOverride": true,
