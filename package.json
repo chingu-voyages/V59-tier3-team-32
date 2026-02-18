@@ -22,6 +22,7 @@
     "======================= DB =========================": "",
     "db:generate": "npm run db:generate -w apps/server",
     "db:migrate": "npm run db:migrate -w apps/server",
+    "db:update": "npm run db:update -w apps/server",
     "======================= UNIT TESTS =========================": "",
     "test": "vitest",
     "test:run": "vitest run",
