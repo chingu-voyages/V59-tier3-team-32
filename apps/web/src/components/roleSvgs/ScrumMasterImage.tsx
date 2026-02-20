@@ -1,4 +1,4 @@
-export default function ScrumMasterIcon() {
+export default function ScrumMasterImage() {
   return (
     <svg
       width="162"

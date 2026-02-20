@@ -1,14 +1,14 @@
-import DesignerIcon from "@/components/icons/DesignerIcon";
-import PyDevIcon from "@/components/icons/PyDevIcon";
-import WebDevIcon from "@/components/icons/WebDevIcon";
-import ScrumMasterIcon from "@/components/icons/ScrumMasterIcon";
-import OwnerIcon from "@/components/icons/OwnerIcon";
+import DesignerImage from "@/components/roleSvgs/DesignerImage";
+import OwnerImage from "@/components/roleSvgs/OwnerImage";
+import PyDevImage from "@/components/roleSvgs/PyDevImage";
+import ScrumMasterImage from "@/components/roleSvgs/ScrumMasterImage";
+import WebDevImage from "@/components/roleSvgs/WebDevImage";
 
 const roles = [
   {
     id: 1,
     title: "Product Owner",
-    icon: OwnerIcon,
+    icon: OwnerImage,
     slug: "scrum_product_owner",
     description:
       "Backlog management, maximizing value, stakeholder management (Aligns with CSPO)",
@@ -16,7 +16,7 @@ const roles = [
   {
     id: 2,
     title: "Scrum Master",
-    icon: ScrumMasterIcon,
+    icon: ScrumMasterImage,
     slug: "scrum_master",
     description:
       "Servant leadership, coaching, removing impediments (Aligns with CSM)",
@@ -25,21 +25,21 @@ const roles = [
   {
     id: 3,
     title: "UI/UX Designer",
-    icon: DesignerIcon,
+    icon: DesignerImage,
     slug: "ui_ux_designer",
     description: "Accessibility, Responsiveness, Design Thinking (No code)",
   },
   {
     id: 4,
     title: "Web Developer",
-    icon: WebDevIcon,
+    icon: WebDevImage,
     slug: "web_developer",
     description: "Web fundamentals + Data Structures & Algorithms (DSA)",
   },
   {
     id: 5,
     title: "Python Developer",
-    icon: PyDevIcon,
+    icon: PyDevImage,
     slug: "python_developer",
     description: "Python syntax + Data Structures & Algorithms (DSA)",
   },

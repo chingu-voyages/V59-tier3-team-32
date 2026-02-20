@@ -1,4 +1,4 @@
-export default function OwnerIcon() {
+export default function OwnerImage() {
   return (
     <svg
       width="162"

@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import Header from "@/app/(main)/_Header";
 import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, test, vi } from "vitest";
 
@@ -38,7 +38,7 @@ describe("Header", () => {
 
   test("renders auth links", () => {
     render(<Header />);
-    expect(screen.getByText("Login")).toBeDefined();
+    expect(screen.getByText("Log in")).toBeDefined();
     expect(screen.getByText("Sign Up")).toBeDefined();
   });
 

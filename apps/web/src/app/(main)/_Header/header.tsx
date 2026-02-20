@@ -9,12 +9,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu } from "lucide-react";
+import AuthDialog from "./AuthDialog";
 
 const Header = () => {
   const pathname = usePathname();
 
   return (
-    <header className="w-full  bg-[#161c2f]">
+    <header className="w-full bg-[#161c2f]">
       <nav
         aria-label="Main navigation"
         className="flex justify-between items-center p-4 text-[20px] xl:max-w-[85%] md:w-[90%] mx-auto"
@@ -65,15 +66,14 @@ const CurrentDate = () => {
 const AuthLinks = () => {
   return (
     <div className="flex space-x-6 items-center">
-      <Link href="/login" className="hover:underline">
-        Login
-      </Link>
-      <Link
-        href="/signup"
-        className="px-8 py-2 bg-primary text-primary-foreground rounded-md hover:bg-accent"
-      >
-        Sign Up
-      </Link>
+      <AuthDialog authType="login">
+        <p className="hover:underline cursor-pointer">Log in</p>
+      </AuthDialog>
+      <AuthDialog authType="signup">
+        <p className="px-8 py-2 bg-primary text-primary-foreground rounded-md hover:bg-accent cursor-pointer">
+          Sign Up
+        </p>
+      </AuthDialog>
     </div>
   );
 };
