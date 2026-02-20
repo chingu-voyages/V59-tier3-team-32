@@ -21,3 +21,22 @@ export const roleSchema = z.object({
   focus: z.string(),
   flashcards: z.array(flashcardSchema),
 });
+
+export type Provider =
+  | "github"
+  | "apple"
+  | "discord"
+  | "facebook"
+  | "google"
+  | "microsoft"
+  | "spotify"
+  | "twitch"
+  | "twitter"
+  | "dropbox"
+  | "linkedin"
+  | "gitlab"
+  | "tiktok"
+  | "reddit"
+  | "roblox"
+  | "vk"
+  | "kick";

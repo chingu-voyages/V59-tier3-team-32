@@ -9,6 +9,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { signIn } from "@/lib/auth-client";
+import { Provider } from "@/lib/types";
+import { useRouter } from "next/navigation";
 
 type AuthType = "login" | "signup";
 
@@ -19,6 +22,27 @@ const AuthDialog = ({
   authType: AuthType;
   children: React.ReactNode;
 }) => {
+  const router = useRouter();
+
+  const handleSocialSignIn = (provider: Provider) => async () => {
+    await signIn.social(
+      {
+        provider: provider,
+      },
+      {
+        onSuccess: () => {
+          router.replace("/roles");
+        },
+        onError: () => {
+          router.replace("/");
+          // toast.error("Couldn't sign in", {
+          //   description: `Could not sign in with ${provider}. Please try again`,
+          // });
+        },
+      },
+    );
+  };
+
   return (
     <Dialog>
       <DialogTrigger>{children}</DialogTrigger>
@@ -35,7 +59,10 @@ const AuthDialog = ({
           </DialogHeader>
 
           <div className="flex flex-col gap-y-6 max-w-xs">
-            <Button className="hover:bg-accent cursor-pointer px-6 py-5">
+            <Button
+              className="hover:bg-accent cursor-pointer px-6 py-5"
+              onClick={handleSocialSignIn("github")}
+            >
               <GithubIcon />
               <span className="pl-2">
                 {authType === "login" ? "Sign in" : "Sign up"} with Github
@@ -44,6 +71,7 @@ const AuthDialog = ({
             <Button
               variant={"outline"}
               className="border-primary hover:bg-slate-900 cursor-pointer px-6 py-5"
+              onClick={handleSocialSignIn("google")}
             >
               <GoogleIcon />
               <span className="pl-2">
