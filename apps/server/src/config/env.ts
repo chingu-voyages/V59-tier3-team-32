@@ -5,8 +5,15 @@ export const DATABASE_ENV = {
 export const SERVER_ENV = {
   FRONTEND_ORIGIN: requireEnv("FRONTEND_ORIGIN"),
   PORT: requireEnv("SERVER_PORT"),
+};
+
+export const AUTH_ENV = {
   BETTER_AUTH_URL: requireEnv("BETTER_AUTH_URL"),
   BETTER_AUTH_SECRET: requireEnv("BETTER_AUTH_SECRET"),
+  GITHUB_CLIENT_ID: requireEnv("GITHUB_CLIENT_ID"),
+  GITHUB_CLIENT_SECRET: requireEnv("GITHUB_CLIENT_SECRET"),
+  GOOGLE_CLIENT_ID: requireEnv("GOOGLE_CLIENT_ID"),
+  GOOGLE_CLIENT_SECRET: requireEnv("GOOGLE_CLIENT_SECRET"),
 };
 
 // TODO: can replace with zod validation

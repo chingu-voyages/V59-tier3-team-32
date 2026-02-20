@@ -1,8 +1,10 @@
+import { toNodeHandler } from "better-auth/node";
 import cors from "cors";
 import express from "express";
 import { corsConfig } from "./config/cors.js";
-import healthRouter from "./health/index.js";
 import flashcardsRouter from "./flashcards/index.js";
+import healthRouter from "./health/index.js";
+import { auth } from "./lib/auth.js";
 
 const app = express();
 
@@ -12,6 +14,9 @@ app.use(function logRequests(req, _, next) {
 });
 
 app.use(cors(corsConfig));
+
+app.all("/api/auth/*splat", toNodeHandler(auth));
+
 app.use(express.json());
 
 app.use("/api/v1/health", healthRouter);
