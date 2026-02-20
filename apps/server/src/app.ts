@@ -5,6 +5,7 @@ import { corsConfig } from "./config/cors.js";
 import flashcardsRouter from "./flashcards/index.js";
 import healthRouter from "./health/index.js";
 import { auth } from "./lib/auth.js";
+import sessionRouter from "./session/index.js";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use(express.json());
 
 app.use("/api/v1/health", healthRouter);
+app.use("/api/v1/session", sessionRouter);
 app.use("/api/v1/flashcards", flashcardsRouter);
 
 app.use(function onUnhandledRequests(_, res) {

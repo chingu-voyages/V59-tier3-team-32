@@ -1,18 +1,34 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { signOut, useSession } from "@/lib/auth-client";
+import { Session } from "better-auth";
 import { Menu } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import AuthDialog from "./AuthDialog";
 
 const Header = () => {
   const pathname = usePathname();
+  const router = useRouter();
+  const { data: res } = useSession();
+
+  const handleLogout = async () => {
+    await signOut({
+      fetchOptions: {
+        onSuccess: async () => {
+          router.replace("/roles");
+        },
+        // onError: () => {
+        // },
+      },
+    });
+  };
 
   return (
     <header className="w-full bg-[#161c2f]">
@@ -44,9 +60,22 @@ const Header = () => {
             </li>
           </ul>
 
-          <AuthLinks />
+          {res ? (
+            <p
+              className="px-8 py-2 bg-primary text-primary-foreground rounded-md hover:bg-accent cursor-pointer"
+              onClick={handleLogout}
+            >
+              Sign out
+            </p>
+          ) : (
+            <AuthLinks />
+          )}
         </div>
-        <HamburgerMenu pathname={pathname} />
+        <HamburgerMenu
+          pathname={pathname}
+          session={res?.session}
+          onLogout={handleLogout}
+        />
       </nav>
     </header>
   );
@@ -67,18 +96,26 @@ const AuthLinks = () => {
   return (
     <div className="flex space-x-6 items-center">
       <AuthDialog authType="login">
-        <p className="hover:underline cursor-pointer">Log in</p>
+        <p className="hover:underline cursor-pointer">Sign in</p>
       </AuthDialog>
       <AuthDialog authType="signup">
         <p className="px-8 py-2 bg-primary text-primary-foreground rounded-md hover:bg-accent cursor-pointer">
-          Sign Up
+          Sign up
         </p>
       </AuthDialog>
     </div>
   );
 };
 
-const HamburgerMenu = ({ pathname }: { pathname: string }) => {
+const HamburgerMenu = ({
+  session,
+  pathname,
+  onLogout,
+}: {
+  session?: Session | null;
+  pathname: string;
+  onLogout: () => Promise<void>;
+}) => {
   return (
     <div className="lg:hidden">
       <DropdownMenu>
@@ -99,22 +136,24 @@ const HamburgerMenu = ({ pathname }: { pathname: string }) => {
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link
-              href="/tests"
-              className={` ${pathname === "/tests" ? "text-primary" : ""}`}
+              href="/roles"
+              className={` ${pathname === "/roles" ? "text-primary" : ""}`}
             >
-              Tests
+              Roles
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/login" className="">
-              Login
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/signup" className="">
-              Sign Up
-            </Link>
-          </DropdownMenuItem>
+          {session ? (
+            <DropdownMenuItem onClick={onLogout}>Sign out</DropdownMenuItem>
+          ) : (
+            <>
+              <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+                <AuthDialog authType="login">Sign in</AuthDialog>
+              </DropdownMenuItem>
+              <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+                <AuthDialog authType="signup">Sign up</AuthDialog>
+              </DropdownMenuItem>
+            </>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

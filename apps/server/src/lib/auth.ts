@@ -1,7 +1,8 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { makeDb } from "../database/index.js";
 import { AUTH_ENV, SERVER_ENV } from "../config/env.js";
+import { makeDb } from "../database/index.js";
+import { account, session, user, verification } from "../database/schema.js";
 
 const {
   GITHUB_CLIENT_ID,
@@ -15,6 +16,7 @@ const { FRONTEND_ORIGIN } = SERVER_ENV;
 export const auth = betterAuth({
   database: drizzleAdapter(makeDb(), {
     provider: "pg",
+    schema: { user, session, account, verification },
   }),
   trustedOrigins: [FRONTEND_ORIGIN],
   session: {

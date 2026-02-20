@@ -27,7 +27,9 @@ const AuthDialog = ({
   const handleSocialSignIn = (provider: Provider) => async () => {
     await signIn.social(
       {
-        provider: provider,
+        provider,
+        callbackURL: window.location.origin,
+        errorCallbackURL: window.location.origin,
       },
       {
         onSuccess: () => {

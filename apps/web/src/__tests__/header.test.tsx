@@ -3,9 +3,16 @@ import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, test, vi } from "vitest";
 
 const mockUsePathname = vi.fn();
+const mockUseRouter = { push: vi.fn };
 
 vi.mock("next/navigation", () => ({
   usePathname: () => mockUsePathname(),
+  useRouter: () => mockUseRouter,
+}));
+
+vi.mock("@lib/auth-client", () => ({
+  useSession: () => ({ data: null }),
+  signOut: vi.fn(),
 }));
 
 vi.mock("next/image", () => ({
@@ -38,8 +45,8 @@ describe("Header", () => {
 
   test("renders auth links", () => {
     render(<Header />);
-    expect(screen.getByText("Log in")).toBeDefined();
-    expect(screen.getByText("Sign Up")).toBeDefined();
+    expect(screen.getByText("Sign in")).toBeDefined();
+    expect(screen.getByText("Sign up")).toBeDefined();
   });
 
   test("renders current date", () => {
