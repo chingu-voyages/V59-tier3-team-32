@@ -8,6 +8,12 @@
       "name": "attempts",
       "schema": "",
       "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
         "user_id": {
           "name": "user_id",
           "type": "text",
@@ -20,13 +26,6 @@
           "primaryKey": false,
           "notNull": true
         },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
         "role": {
           "name": "role",
           "type": "text",
@@ -35,15 +34,22 @@
         },
         "questions_count": {
           "name": "questions_count",
-          "type": "integer",
+          "type": "smallint",
           "primaryKey": false,
           "notNull": true
         },
         "correct_count": {
           "name": "correct_count",
-          "type": "integer",
+          "type": "smallint",
           "primaryKey": false,
           "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
         }
       },
       "indexes": {},
