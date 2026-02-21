@@ -22,7 +22,7 @@ const Header = () => {
     await signOut({
       fetchOptions: {
         onSuccess: async () => {
-          router.replace("/roles");
+          router.replace("/");
         },
         // onError: () => {
         // },
