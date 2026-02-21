@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { selectAttempts } from "./attempts-queries.js";
+import { selectAttempts } from "./attempt-queries.js";
 
 export async function getAttempts(_req: Request, res: Response) {
   try {

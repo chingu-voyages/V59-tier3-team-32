@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAttempts } from "./attempts-handlers.js";
+import { getAttempts } from "./attempt-handlers.js";
 
 const router = Router();
 

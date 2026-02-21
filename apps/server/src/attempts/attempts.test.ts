@@ -1,10 +1,10 @@
 import { describe, it, expect, vi } from "vitest";
-import { getAttempts } from "./attempts-handlers.js";
-import { selectAttempts } from "./attempts-queries.js";
-import type { Attempt } from "./attempts-types.js";
+import { getAttempts } from "./attempt-handlers.js";
+import { selectAttempts } from "./attempt-queries.js";
+import type { Attempt } from "./attempt-types.js";
 
 // Mock the database query
-vi.mock("./attempts-queries.js", () => ({
+vi.mock("./attempt-queries.js", () => ({
   selectAttempts: vi.fn(),
 }));
 
