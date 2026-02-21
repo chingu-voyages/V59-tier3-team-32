@@ -10,16 +10,16 @@ const roles = [
     title: "Product Owner",
     icon: OwnerImage,
     slug: "scrum_product_owner",
-    description:
-      "Backlog management, maximizing value, stakeholder management (Aligns with CSPO)",
+    description: `A Product Owner defines the vision of a product,
+      prioritizes features, and ensures the team builds what users need.`,
   },
   {
     id: 2,
     title: "Scrum Master",
     icon: ScrumMasterImage,
     slug: "scrum_master",
-    description:
-      "Servant leadership, coaching, removing impediments (Aligns with CSM)",
+    description: `A Scrum Master is a facilitator and coach who ensures the scrum
+      framework is followed and helps teams improve their workflows.`,
     questions: 20,
   },
   {
@@ -27,21 +27,24 @@ const roles = [
     title: "UI/UX Designer",
     icon: DesignerImage,
     slug: "ui_ux_designer",
-    description: "Accessibility, Responsiveness, Design Thinking (No code)",
+    description: `A User Experience(UX)/User Interface(UI) designer creates
+      intuitive and visually appealing digital products and services such as
+      websites, apps, and software.`,
   },
   {
     id: 4,
     title: "Web Developer",
     icon: WebDevImage,
     slug: "web_developer",
-    description: "Web fundamentals + Data Structures & Algorithms (DSA)",
+    description: `A Web Developer builds and maitains websites using programming languages.`,
   },
   {
     id: 5,
     title: "Python Developer",
     icon: PyDevImage,
     slug: "python_developer",
-    description: "Python syntax + Data Structures & Algorithms (DSA)",
+    description: `A Python Developer codes, designs, deploys, and debugs
+      development projects, typically on the backend.`,
   },
 ];
 
