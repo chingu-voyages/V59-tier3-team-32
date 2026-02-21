@@ -37,6 +37,7 @@ const AuthDialog = ({
         },
         onError: () => {
           router.replace("/");
+          // TODO: Consider using a toast for errors
           // toast.error("Couldn't sign in", {
           //   description: `Could not sign in with ${provider}. Please try again`,
           // });
@@ -48,13 +49,16 @@ const AuthDialog = ({
   return (
     <Dialog>
       <DialogTrigger>{children}</DialogTrigger>
-      <DialogContent className="border-0 rounded-sm bg-[#161c2f]">
+      <DialogContent
+        className="border-0 rounded-sm bg-[#161c2f]"
+        aria-label={authType === "login" ? "Sign in dialog" : "Sign up dialog"}
+      >
         <div className="py-16 px-8 flex flex-col items-center gap-y-8">
           <DialogHeader className="flex flex-col gap-y-4">
             <DialogTitle className="text-center text-2xl">
               {authType === "login" ? "Sign in" : "Sign up"}
             </DialogTitle>
-            <p className="text-sm text-center">
+            <p className="text-xs sm:text-sm text-center">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia
               quisquam asperiores sed? Dolor, alias.
             </p>
@@ -65,8 +69,10 @@ const AuthDialog = ({
               className="hover:bg-accent cursor-pointer px-6 py-5"
               onClick={handleSocialSignIn("github")}
             >
-              <GithubIcon />
-              <span className="pl-2">
+              <span aria-hidden="true">
+                <GithubIcon />
+              </span>
+              <span className="pl-2 text-xs sm:text-sm">
                 {authType === "login" ? "Sign in" : "Sign up"} with Github
               </span>
             </Button>
@@ -75,8 +81,10 @@ const AuthDialog = ({
               className="border-primary hover:bg-slate-900 cursor-pointer px-6 py-5"
               onClick={handleSocialSignIn("google")}
             >
-              <GoogleIcon />
-              <span className="pl-2">
+              <span aria-hidden="true">
+                <GoogleIcon />
+              </span>
+              <span className="pl-2 text-xs sm:text-sm">
                 {authType === "login" ? "Sign in" : "Sign up"} with Google
               </span>
             </Button>
