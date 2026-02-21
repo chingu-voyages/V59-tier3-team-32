@@ -5,30 +5,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { signOut, useSession } from "@/lib/auth-client";
-import { Session } from "better-auth";
+import { useSession } from "@/lib/auth-client";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import AuthDialog from "./AuthDialog";
+import UserNav from "./UserNav";
 
 const Header = () => {
   const pathname = usePathname();
-  const router = useRouter();
-  const { data: res } = useSession();
-
-  const handleLogout = async () => {
-    await signOut({
-      fetchOptions: {
-        onSuccess: async () => {
-          router.replace("/");
-        },
-        // onError: () => {
-        // },
-      },
-    });
-  };
+  const { data: authContext } = useSession();
 
   return (
     <header className="w-full bg-[#161c2f]">
@@ -60,22 +47,15 @@ const Header = () => {
             </li>
           </ul>
 
-          {res ? (
-            <p
-              className="px-8 py-2 bg-primary text-primary-foreground rounded-md hover:bg-accent cursor-pointer"
-              onClick={handleLogout}
-            >
-              Sign out
-            </p>
+          {authContext ? <UserNav user={authContext.user} /> : <AuthLinks />}
+        </div>
+        <div className="lg:hidden flex items-center">
+          {authContext ? (
+            <UserNav user={authContext.user} />
           ) : (
-            <AuthLinks />
+            <HamburgerMenu pathname={pathname} />
           )}
         </div>
-        <HamburgerMenu
-          pathname={pathname}
-          session={res?.session}
-          onLogout={handleLogout}
-        />
       </nav>
     </header>
   );
@@ -107,56 +87,40 @@ const AuthLinks = () => {
   );
 };
 
-const HamburgerMenu = ({
-  session,
-  pathname,
-  onLogout,
-}: {
-  session?: Session | null;
-  pathname: string;
-  onLogout: () => Promise<void>;
-}) => {
+const HamburgerMenu = ({ pathname }: { pathname: string }) => {
   return (
-    <div className="lg:hidden">
-      <DropdownMenu>
-        <DropdownMenuTrigger className="text-muted-foreground font-semibold hover:text-primary">
-          <Menu size={28} />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
-          align="end"
-          className="bg-[#161c2f] border-[#161c2f] lg:hidden"
-        >
-          <DropdownMenuItem asChild>
-            <Link
-              href="/"
-              className={` ${pathname === "/" ? "text-primary" : ""}`}
-            >
-              Home
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link
-              href="/roles"
-              className={` ${pathname === "/roles" ? "text-primary" : ""}`}
-            >
-              Roles
-            </Link>
-          </DropdownMenuItem>
-          {session ? (
-            <DropdownMenuItem onClick={onLogout}>Sign out</DropdownMenuItem>
-          ) : (
-            <>
-              <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-                <AuthDialog authType="login">Sign in</AuthDialog>
-              </DropdownMenuItem>
-              <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-                <AuthDialog authType="signup">Sign up</AuthDialog>
-              </DropdownMenuItem>
-            </>
-          )}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger className="text-muted-foreground font-semibold hover:text-primary">
+        <Menu size={28} />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align="end"
+        className="bg-[#161c2f] border-[#161c2f] lg:hidden"
+      >
+        <DropdownMenuItem asChild>
+          <Link
+            href="/"
+            className={` ${pathname === "/" ? "text-primary" : ""}`}
+          >
+            Home
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link
+            href="/roles"
+            className={` ${pathname === "/roles" ? "text-primary" : ""}`}
+          >
+            Roles
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+          <AuthDialog authType="login">Sign in</AuthDialog>
+        </DropdownMenuItem>
+        <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+          <AuthDialog authType="signup">Sign up</AuthDialog>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 
