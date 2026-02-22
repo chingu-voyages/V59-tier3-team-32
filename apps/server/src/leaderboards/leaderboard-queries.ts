@@ -1,4 +1,4 @@
-import { eq, sql } from "drizzle-orm";
+import { asc, desc, eq, sql } from "drizzle-orm";
 import { attempts } from "../attempts/attempt-schemas.js";
 import { makeDb } from "../database/index.js";
 import { roles } from "../quizzes/quiz-schemas.js";
@@ -6,18 +6,38 @@ import { users } from "../users/user-schemas.js";
 
 // TODO: think about indexing (role_id, user_id)
 export async function getLeaderboardRows(roleId: string) {
-  return makeDb()
-    .select({
-      id: users.id,
-      name: users.name,
-      score: sql<number>`MAX(${attempts.correctCount}::float / ${attempts.questionsCount}::float)`,
+  const db = makeDb();
+  const score = sql<number>`(${attempts.correctCount}::float / ${attempts.questionsCount}::float)`;
+
+  const bestAttemptPerUser = db
+    .selectDistinctOn([users.id], {
+      userId: users.id,
+      attemptId: attempts.id,
+      userName: users.name,
+      score: score,
+      attemptNumber: attempts.attemptNumber,
+      createdAt: attempts.createdAt,
     })
     .from(attempts)
-    .innerJoin(users, eq(users.id, attempts.userId))
     .where(eq(attempts.roleId, roleId))
-    .groupBy(users.id, users.name)
+    .innerJoin(users, eq(users.id, attempts.userId))
+    .orderBy(users.id, desc(score), asc(attempts.attemptNumber))
+    .as("best_attempt_per_user");
+
+  return await db
+    .select({
+      attemptId: bestAttemptPerUser.attemptId,
+      userName: bestAttemptPerUser.userName,
+      score: bestAttemptPerUser.score,
+      attemptNumber: bestAttemptPerUser.attemptNumber,
+      createdAt: bestAttemptPerUser.createdAt,
+    })
+    .from(bestAttemptPerUser)
     .orderBy(
-      sql<number>`MAX(${attempts.correctCount}::float / ${attempts.questionsCount}::float) DESC`,
+      desc(bestAttemptPerUser.score),
+      asc(bestAttemptPerUser.attemptNumber),
+      asc(bestAttemptPerUser.createdAt),
+      asc(bestAttemptPerUser.attemptId),
     )
     .limit(10);
 }
