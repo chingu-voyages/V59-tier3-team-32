@@ -3,3 +3,4 @@
 // export * from "../bar/bar-schema.js";
 
 export * from "./auth-schema.js";
+export * from "../attempts/attempt-schemas.ts";

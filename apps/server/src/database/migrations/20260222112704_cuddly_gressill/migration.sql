@@ -44,6 +44,16 @@ CREATE TABLE "verification" (
 	"updated_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE "attempts" (
+	"id" text PRIMARY KEY,
+	"user_id" text NOT NULL,
+	"quiz_id" text NOT NULL,
+	"role" text NOT NULL,
+	"correct_count" smallint NOT NULL,
+	"questions_count" smallint NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL
+);
+--> statement-breakpoint
 CREATE INDEX "account_userId_idx" ON "account" ("user_id");--> statement-breakpoint
 CREATE INDEX "session_userId_idx" ON "session" ("user_id");--> statement-breakpoint
 CREATE INDEX "verification_identifier_idx" ON "verification" ("identifier");--> statement-breakpoint
