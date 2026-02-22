@@ -26,9 +26,9 @@ const Header = () => {
         <Link href="/" aria-label="Home - Logo">
           <Image src="/icons/logo.svg" alt="Logo" width={150} height={150} />
         </Link>
-        <div className="  hidden lg:flex space-x-12 items-center justify-between w-full xl:pl-48">
+        <div className="  hidden lg:flex gap-x-12 items-center justify-between w-full xl:pl-48">
           <CurrentDate />
-          <ul role="list" className="flex space-x-12 ">
+          <ul role="list" className="flex gap-x-12 ">
             <li>
               <Link
                 href="/"
@@ -69,7 +69,7 @@ const CurrentDate = () => {
     day: "numeric",
   };
   const formattedDate: string = now.toLocaleDateString("en-us", options);
-  return <div className="font-semibold ml-20">{formattedDate}</div>;
+  return <div className="font-semibold pl-20">{formattedDate}</div>;
 };
 
 const AuthLinks = () => {

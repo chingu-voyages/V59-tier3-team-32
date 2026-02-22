@@ -1,4 +1,8 @@
 "use client";
+import HistoryIcon from "@/components/icons/HistoryIcon";
+import NotificationsIcon from "@/components/icons/NotificationsIcon";
+import ProfileIcon from "@/components/icons/ProfileIcon";
+import SettingsIcon from "@/components/icons/SettingsIcon";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +16,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { signOut } from "@/lib/auth-client";
 import { User } from "better-auth";
-import { CircleUserRound, CreditCard, LogOut } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -37,51 +40,83 @@ const UserNav = ({ user }: { user: User }) => {
         <Button
           variant="ghost"
           className="relative h-8 w-8 rounded-full cursor-pointer"
+          aria-label="Open user menu"
         >
           <Avatar className="h-9 w-9">
-            <AvatarImage src={user.image ?? user.name} alt="user-image" />
-            <AvatarFallback>SC</AvatarFallback>
+            <AvatarImage
+              src={user.image ?? undefined}
+              alt={`${user.name}'s profile picture`}
+            />
+            <AvatarFallback>
+              {user.name.slice(0, 2).toUpperCase()}
+            </AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="end" forceMount>
-        <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-1">
-            <p className="text-sm leading-none font-medium">{user.name}</p>
+      <DropdownMenuContent className="px-2 border-0" align="end" forceMount>
+        <DropdownMenuLabel className="font-normal flex items-center gap-1 p-4">
+          <Avatar className="h-9 w-9">
+            <AvatarImage
+              src={user.image ?? undefined}
+              alt={`${user.name}'s profile picture`}
+            />
+            <AvatarFallback>
+              {user.name.slice(0, 2).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+          <div className="flex flex-col gap-y-1 p-2">
+            <p className="text-sm leading-none font-medium pb-0.5">
+              {user.name}
+            </p>
             <p className="text-muted-foreground text-xs leading-none">
               {user.email}
             </p>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem className="py-2.5">
-            <CircleUserRound />
+        <DropdownMenuSeparator className="bg-[#0f1425]" />
+        <DropdownMenuGroup className="py-0.5">
+          <DropdownMenuItem className="px-3 py-2.5 cursor-pointer">
+            <span className="pt-1" aria-hidden="true">
+              <ProfileIcon />
+            </span>
             Profile
           </DropdownMenuItem>
-          <DropdownMenuItem className="py-2.5">
-            <CreditCard />
+          <DropdownMenuItem className="px-3 py-2.5 cursor-pointer">
+            <span aria-hidden="true">
+              <SettingsIcon />
+            </span>
             Settings
           </DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
+        <DropdownMenuSeparator className="bg-[#0f1425]" />
+        <DropdownMenuGroup className="py-0.5">
           <Link href={"/history"}>
-            <DropdownMenuItem className="py-2.5">
-              <CircleUserRound />
+            <DropdownMenuItem className="px-3 py-2.5 cursor-pointer">
+              <span aria-hidden="true">
+                <HistoryIcon />
+              </span>
               History
             </DropdownMenuItem>
           </Link>
-          <DropdownMenuItem className="py-2.5">
-            <CreditCard />
+          <DropdownMenuItem className="px-3 py-2.5 cursor-pointer">
+            <span aria-hidden="true">
+              <NotificationsIcon />
+            </span>
             Notifications
           </DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={handleLogout} className="py-2.5">
-          <LogOut />
-          Log out
-        </DropdownMenuItem>
+        <DropdownMenuSeparator className="bg-[#0f1425]" />
+        <div className="flex items-center justify-center p-3">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={handleLogout}
+            className={`text-(--color-secondary) hover:text-(--color-secondary)
+              border-(--color-secondary) bg-transparent hover:bg-transparent cursor-pointer px-8 py-4.5`}
+          >
+            Log out
+          </Button>
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );
