@@ -42,10 +42,14 @@ describe("Home page", () => {
   it("renders mapped copy", () => {
     render(<Home />);
     expect(
-      screen.getByRole("heading", { name: /honest/i, level: 3 }),
+      screen.getByRole("heading", { name: /prepare smarter/i, level: 3 }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/powerful results/i)).toBeInTheDocument();
-    expect(screen.getByText(/smarter preparation/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /insightful feedback/i, level: 3 }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /gain confidence/i, level: 3 }),
+    ).toBeInTheDocument();
     expect(screen.getByText(/choose your role/i)).toBeInTheDocument();
     expect(screen.getByText(/answer questions/i)).toBeInTheDocument();
     expect(screen.getByText(/view result/i)).toBeInTheDocument();

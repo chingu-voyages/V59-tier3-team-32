@@ -1,4 +1,4 @@
-export default function PyDevIcon() {
+export default function PyDevImage() {
   return (
     <svg
       width="162"

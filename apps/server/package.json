@@ -9,6 +9,7 @@
     "dev": "dotenvx run -- nodemon src/server.ts",
     "build": "tsc -b",
     "start": "dotenvx run -- node dist/server.js",
+    "db:update": "dotenvx run -- drizzle-kit up",
     "db:generate": "dotenvx run -- drizzle-kit generate",
     "db:migrate": "dotenvx run -- drizzle-kit migrate",
     "test": "vitest",
@@ -16,8 +17,9 @@
   },
   "dependencies": {
     "@paralleldrive/cuid2": "3.0.6",
+    "better-auth": "1.4.18",
     "cors": "2.8.6",
-    "drizzle-orm": "0.45.1",
+    "drizzle-orm": "1.0.0-beta.15-859cf75",
     "express": "5.2.1",
     "pg": "8.17.2"
   },
@@ -26,7 +28,7 @@
     "@types/cors": "2.8.19",
     "@types/express": "5.0.6",
     "@types/pg": "8.16.0",
-    "drizzle-kit": "0.31.8",
+    "drizzle-kit": "1.0.0-beta.15-859cf75",
     "nodemon": "3.1.11",
     "ts-node": "10.9.2"
   }

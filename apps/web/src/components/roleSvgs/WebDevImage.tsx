@@ -1,4 +1,4 @@
-export default function WebDevIcon() {
+export default function WebDevImage() {
   return (
     <svg
       width="162"

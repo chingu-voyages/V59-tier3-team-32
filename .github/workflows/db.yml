@@ -8,7 +8,7 @@ on:
       - 'apps/server/drizzle.config.ts'
       - 'package*.json'
       - '.github/workflows/db.yml'
-  push: 
+  push:
     branches: [dev, main]
     paths:
       - 'apps/server/src/database/**'
@@ -16,19 +16,11 @@ on:
       - 'package*.json'
       - '.github/workflows/db.yml'
 
-jobs: 
+jobs:
   drift-check:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        include:
-          - branch: main
-            env_alias: "Production - v59-tier3-team-32-server" 
-          - branch: dev
-            env_alias: "Preview - v59-tier3-team-32-server"
-
-    environment: ${{ matrix.env_alias }}
+    environment: ${{ github.ref_name == 'main' && 'Production - v59-tier3-team-32-server' || 'Preview - v59-tier3-team-32-server' }}
 
     steps:
       - uses: actions/checkout@v6
@@ -40,10 +32,16 @@ jobs:
       - run: npm ci
 
       - name: Check for migration drift
-        env: 
+        env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
+          BETTER_AUTH_URL: ${{ 'http://localhost:8080' }}
           FRONTEND_ORIGIN: ${{ 'http://localhost:3000' }}
           SERVER_PORT: ${{ '8080' }}
+          GITHUB_CLIENT_ID: ${{ 'github-client-id' }}
+          GITHUB_CLIENT_SECRET: ${{ 'github-client-secret' }}
+          GOOGLE_CLIENT_ID: ${{ 'google-client-id' }}
+          GOOGLE_CLIENT_SECRET: ${{ 'google-client-secret' }}
 
         run: |
           npm run db:generate
@@ -52,22 +50,14 @@ jobs:
   migrate:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
-    needs: drift-check 
+    needs: drift-check
 
-    strategy:
-      matrix:
-        include:
-          - branch: main
-            env_alias: "Production - v59-tier3-team-32-server" 
-          - branch: dev
-            env_alias: "Preview - v59-tier3-team-32-server"
+    environment: ${{ github.ref_name == 'main' && 'Production - v59-tier3-team-32-server' || 'Preview - v59-tier3-team-32-server' }}
 
-    environment: ${{ matrix.env_alias }}
-
-    concurrency: 
+    concurrency:
       group: migrate-${{ github.ref_name }}
       cancel-in-progress: false
-  
+
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -78,10 +68,15 @@ jobs:
       - run: npm ci
 
       - name: Run DB migrations
-        if: github.ref_name == matrix.branch
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
+          BETTER_AUTH_URL: ${{ 'http://localhost:8080' }}
           FRONTEND_ORIGIN: ${{ 'http://localhost:3000' }}
           SERVER_PORT: ${{ '8080' }}
+          GITHUB_CLIENT_ID: ${{ 'github-client-id' }}
+          GITHUB_CLIENT_SECRET: ${{ 'github-client-secret' }}
+          GOOGLE_CLIENT_ID: ${{ 'google-client-id' }}
+          GOOGLE_CLIENT_SECRET: ${{ 'google-client-secret' }}
 
         run: npm run db:migrate

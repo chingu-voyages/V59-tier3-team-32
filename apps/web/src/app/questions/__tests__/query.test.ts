@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { getFlashcardQuestions } from "../lib/queries";
+import { getFlashcardQuestions } from "../../../lib/queries";
 import { mockRoleDetails } from "./mockData";
 
 vi.stubEnv("NEXT_PUBLIC_BACKEND_ORIGIN", "http://localhost:3000");

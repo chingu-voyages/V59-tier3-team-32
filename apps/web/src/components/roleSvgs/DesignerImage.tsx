@@ -1,4 +1,4 @@
-export default function DesignerIcon() {
+export default function DesignerImage() {
   return (
     <svg
       width="162"

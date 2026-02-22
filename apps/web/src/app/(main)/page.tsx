@@ -6,21 +6,20 @@ import Link from "next/link";
 const aboutUs = [
   {
     icon: "/icons/checkmark.svg",
-    title: "honest",
-    description: `Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate 
-      libero et velit interdum, ac aliquet odio mattis. Clh`,
+    title: "Prepare Smarter",
+    description: `Practice at your own pace with real interview questions tailored
+      to your own role.`,
   },
   {
     icon: "/icons/peace.svg",
-    title: "powerful results",
-    description: `Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate
-      libero et velit interdum, ac aliquet odio mattis. Clh`,
+    title: "Insightful Feedback",
+    description: `Get instant feedback with detailed explanation for each question.
+      Understand not just what's right but why it matters.`,
   },
   {
     icon: "/icons/handshake.svg",
-    title: "smarter preparation",
-    description: `Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate
-      libero et velit interdum, ac aliquet odio mattis. Clh`,
+    title: "Gain confidence",
+    description: `Build real confidence through consistent and focused practice.`,
   },
 ];
 
@@ -41,8 +40,8 @@ const Hero = () => {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="p-4 lg:py-6.25 md:px-15 lg:px-0 flex flex-col md:grid md:grid-cols-2 
-      lg:col-span-[524px] items-center justify-between space-y-12 lg:gap-2.5 
+      className="p-4 lg:py-6.25 md:px-15 lg:px-0 flex flex-col md:grid md:grid-cols-2
+      lg:col-span-[524px] items-center justify-between space-y-12 lg:gap-2.5
       lg:pt-26.75 md:mx-auto lg:max-w-[85%]"
     >
       <div className="w-full max-w-131 lg:space-y-8 space-y-6 text-center lg:text-left">
@@ -53,14 +52,14 @@ const Hero = () => {
           Master your interview skills
         </h1>
         <p className="lg:text-[18px]">
-          Torem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-          turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec
-          fringilla accumsan.
+          Prepare for tech interviews with questions tailored to your role and
+          get instant feedbacks. Confido helps product owners, scrum masters,
+          designers and developers build confidence through focused practice.
         </p>
         <Link
           href="/questions"
           aria-label="Test your knowledge by answering interview questions"
-          className="px-3 py-3 bg-[#B256FC] rounded-sm focus:bg-accent focus:outline-none 
+          className="px-3 py-3 bg-[#B256FC] rounded-sm focus:bg-accent focus:outline-none
           focus:ring-2 focus:ring-white transition-colors duration-200 hover:bg-accent
          text-white font-semibold inline-flex items-center gap-2"
         >
@@ -108,7 +107,7 @@ const About = () => {
           <div
             key={index + 1}
             role="article"
-            className={`w-full bg-[#161c2f] rounded-sm py-10 px-6 flex flex-col 
+            className={`w-full bg-[#161c2f] rounded-sm py-10 px-6 flex flex-col
               items-center space-y-4 text-center z-1 hover:ring-1 ring-primary
               hover:drop-shadow-[#b256fc] hover:drop-shadow-md`}
           >
@@ -173,7 +172,7 @@ const Process = () => {
                 className="
                   absolute inset-0 rounded-full p-px"
                 style={{
-                  background: `linear-gradient(180deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0) 
+                  background: `linear-gradient(180deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0)
                     -42.59%, #CB8DE8 -42.58%, rgba(203, 143, 232, 0.18) 4.35%,
                     rgba(151, 60, 68, 0.055) 99.99%, rgba(199, 137, 228, 0) 100%)`,
                 }}
@@ -186,7 +185,7 @@ const Process = () => {
                   absolute inset-px rounded-full
                 "
                 style={{
-                  background: `radial-gradient(111.14% 111.14% at 8.37% 0%, rgba(255, 255, 255, 0.36) 
+                  background: `radial-gradient(111.14% 111.14% at 8.37% 0%, rgba(255, 255, 255, 0.36)
                     0%, rgba(255, 255, 255, 0) 100%)`,
                 }}
               />
@@ -222,7 +221,7 @@ const Explore = () => {
       />
 
       <ul
-        className={`px-4 md:mx-auto lg:w-[85%] lg:px-0 grid grid-cols-1 
+        className={`px-4 md:mx-auto lg:w-[85%] lg:px-0 grid grid-cols-1
         md:grid-cols-3 gap-4 lg:gap-x-10 pb-16`}
       >
         {Array.from({ length: 3 }).map((_, index) => (

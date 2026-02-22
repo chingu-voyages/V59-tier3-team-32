@@ -1,7 +1,7 @@
 import { cleanup, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import Footer from "./";
+import Footer from "@/app/(main)/_Footer";
 import members from "./members.json";
 
 /**
