@@ -1,8 +1,9 @@
 import cors from "cors";
 import express from "express";
 import { corsConfig } from "./config/cors.js";
-import healthRouter from "./health/index.js";
 import flashcardsRouter from "./flashcards/index.js";
+import healthRouter from "./health/index.js";
+import leaderboardsRouter from "./leaderboards/index.js";
 
 const app = express();
 
@@ -14,8 +15,9 @@ app.use(function logRequests(req, _, next) {
 app.use(cors(corsConfig));
 app.use(express.json());
 
-app.use("/api/v1/health", healthRouter);
 app.use("/api/v1/flashcards", flashcardsRouter);
+app.use("/api/v1/health", healthRouter);
+app.use("/api/v1/leaderboards", leaderboardsRouter);
 
 app.use(function onUnhandledRequests(_, res) {
   res.status(404).send({ message: "route not found" });
