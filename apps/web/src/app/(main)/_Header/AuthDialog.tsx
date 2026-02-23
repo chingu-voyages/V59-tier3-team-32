@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/dialog";
 import { signIn } from "@/lib/auth-client";
 import { Provider } from "@/lib/types";
-import { useRouter } from "next/navigation";
 
 type AuthType = "login" | "signup";
 
@@ -22,8 +21,6 @@ const AuthDialog = ({
   authType: AuthType;
   children: React.ReactNode;
 }) => {
-  const router = useRouter();
-
   const handleSocialSignIn = (provider: Provider) => async () => {
     await signIn.social(
       {
@@ -32,16 +29,9 @@ const AuthDialog = ({
         errorCallbackURL: window.location.origin,
       },
       {
-        onSuccess: () => {
-          router.replace("/roles");
-        },
-        onError: () => {
-          router.replace("/");
-          // TODO: Consider using a toast for errors
-          // toast.error("Couldn't sign in", {
-          //   description: `Could not sign in with ${provider}. Please try again`,
-          // });
-        },
+        // TODO: Consider using a toast for updates
+        onSuccess: () => {},
+        onError: () => {},
       },
     );
   };

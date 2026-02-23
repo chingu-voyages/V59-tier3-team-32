@@ -21,7 +21,6 @@
         "isolatedModules": true,
         "verbatimModuleSyntax": true,
         "forceConsistentCasingInFileNames": true,
-        "rewriteRelativeImportExtensions": true
     },
     "exclude": [
         "**/*.test.ts",
