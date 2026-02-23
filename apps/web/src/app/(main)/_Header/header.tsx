@@ -5,17 +5,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useSession } from "@/lib/auth-client";
+// import { useSession } from "@/lib/auth-client";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import AuthDialog from "./AuthDialog";
-import UserNav from "./UserNav";
+// import UserNav from "./UserNav";
 
 const Header = () => {
   const pathname = usePathname();
-  const { data: authContext } = useSession();
+  // const { data: authContext } = useSession();
 
   return (
     <header className="w-full bg-[#161c2f]">
@@ -47,14 +47,14 @@ const Header = () => {
             </li>
           </ul>
 
-          {authContext ? <UserNav user={authContext.user} /> : <AuthLinks />}
+          {/* {authContext ? <UserNav user={authContext.user} /> : <AuthLinks />} */}
         </div>
         <div className="lg:hidden flex items-center">
-          {authContext ? (
+          {/* {authContext ? (
             <UserNav user={authContext.user} />
-          ) : (
-            <HamburgerMenu pathname={pathname} />
-          )}
+          ) : ( */}
+          <HamburgerMenu pathname={pathname} />
+          {/* )} */}
         </div>
       </nav>
     </header>
@@ -113,12 +113,12 @@ const HamburgerMenu = ({ pathname }: { pathname: string }) => {
             Roles
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+        {/* <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
           <AuthDialog authType="login">Sign in</AuthDialog>
         </DropdownMenuItem>
         <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
           <AuthDialog authType="signup">Sign up</AuthDialog>
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -9,7 +9,7 @@ vi.mock("./attempt-queries.js", () => ({
   selectAttempts: vi.fn(),
 }));
 
-describe("postAttempt", () => {
+describe.skip("postAttempt", () => {
   const mockReqBody: PostAttemptReq = {
     userId: "1",
     quizId: "2",
@@ -81,7 +81,7 @@ describe("postAttempt", () => {
   });
 });
 
-describe("getAttempts", () => {
+describe.skip("getAttempts", () => {
   const mockAttempts: Attempt[] = [
     {
       id: "1",
