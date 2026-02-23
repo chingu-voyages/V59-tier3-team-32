@@ -224,26 +224,57 @@ const Explore = () => {
         className={`px-4 md:mx-auto lg:w-[85%] lg:px-0 grid grid-cols-1
         md:grid-cols-3 gap-4 lg:gap-x-10 pb-16`}
       >
-        {Array.from({ length: 3 }).map((_, index) => (
-          <li
-            key={index}
-            className={`flex flex-col py-9 px-16.5 rounded-md items-center
-              justify-center space-y-6 hover:ring-1 ring-primary`}
-            style={{
-              background: `linear-gradient(180deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0) -42.59%,
-                #CB8DE8 -42.58%, rgba(203, 143, 232, 0.18) 4.35%, rgba(151, 60, 68, 0.055)
-                99.99%, rgba(199, 137, 228, 0) 100%)`,
-            }}
-          >
-            <h3 className="text-[24px] text-center">UI/UX Designer</h3>
-            <Image
-              src="/role.svg"
-              alt="UI/UX Designer"
-              width={122}
-              height={101}
-            />
-          </li>
-        ))}
+        <li
+          className={`flex flex-col py-9 px-16.5 rounded-md items-center
+            justify-center space-y-6 hover:ring-1 ring-primary`}
+          style={{
+            background: `linear-gradient(180deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0) -42.59%,
+              #CB8DE8 -42.58%, rgba(203, 143, 232, 0.18) 4.35%, rgba(151, 60, 68, 0.055)
+              99.99%, rgba(199, 137, 228, 0) 100%)`,
+          }}
+        >
+          <h3 className="text-[24px] text-center">Designer</h3>
+          <Image
+            src="/roles/designer.svg"
+            alt="Designer"
+            width={122}
+            height={101}
+          />
+        </li>
+        <li
+          className={`flex flex-col py-9 px-16.5 rounded-md items-center
+            justify-center space-y-6 hover:ring-1 ring-primary`}
+          style={{
+            background: `linear-gradient(180deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0) -42.59%,
+              #CB8DE8 -42.58%, rgba(203, 143, 232, 0.18) 4.35%, rgba(151, 60, 68, 0.055)
+              99.99%, rgba(199, 137, 228, 0) 100%)`,
+          }}
+        >
+          <h3 className="text-[24px] text-center">Developer</h3>
+          <Image
+            src="/roles/developer.svg"
+            alt="Developer"
+            width={122}
+            height={101}
+          />
+        </li>
+        <li
+          className={`flex flex-col py-9 px-16.5 rounded-md items-center
+            justify-center space-y-6 hover:ring-1 ring-primary`}
+          style={{
+            background: `linear-gradient(180deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0) -42.59%,
+              #CB8DE8 -42.58%, rgba(203, 143, 232, 0.18) 4.35%, rgba(151, 60, 68, 0.055)
+              99.99%, rgba(199, 137, 228, 0) 100%)`,
+          }}
+        >
+          <h3 className="text-[24px] text-center">Product Owner</h3>
+          <Image
+            src="/roles/product-owner.svg"
+            alt="Product Owner"
+            width={122}
+            height={101}
+          />
+        </li>
       </ul>
 
       <Link

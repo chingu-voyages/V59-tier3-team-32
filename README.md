@@ -1,17 +1,19 @@
-# voyage-tasks
+# Confido
 
-Your project's `readme` is as important to success as your code. For 
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+> Prepare for tech interviews with questions tailored to your role and get instant feedback
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point - 
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+Confido helps Product Owners, Scrum Masters, Designers, and Developers build confidence through focused practice/
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+## Demo
 
-> Own it & Make it your Own!
+🚀 **Try it live:** [Confido](https://v59-tier3-team-32-web.vercel.app)
+
+## Dependencies
+
+To run the project locally, you will need:
+
+- [Node.js](https://nodejs.org/en)
+- [PostgreSQL](https://www.postgresql.org) for a local database
 
 ## Dev Setup
 
@@ -19,38 +21,31 @@ in your `readme` feel free to replace the text we've provided here.
 
    ```sh
    # from the root of the repo
-   npm ci
+   npm ci --legacy-peer-deps
    ```
 
-2. Clone each `.env.sample` as `.env` for relevant apps & fill their respective values.
-3. run migrations
+2. Create a copy of `.env.example` called `.env` for each app & fill each env var's value.
+3. If using a local database, [start the server](https://www.postgresql.org/docs/current/server-start.html).
+4. run database migrations
 
    ```sh
    # from the root of the repo
    npm run db:migrate
    ```
 
-4. spin up dev servers in separate terminals
+5. spin up server & web dev servers
 
    ```sh
-   # from the root of the repo once again
+   # from the root of the repo, in separate terminals
    npm run server:dev
    npm run web:dev
    ```
 
 ## Team Documents
 
-You may find these helpful as you work together to organize your project.
-
-- [Team Project Ideas](./docs/team_project_ideas.md)
-- [Team Decision Log](./docs/team_decision_log.md)
-
-Meeting Agenda templates (located in the `/docs` directory in this repo):
-
-- Meeting - Voyage Kickoff --> ./docs/meeting-voyage_kickoff.docx
-- Meeting - App Vision & Feature Planning --> ./docs/meeting-vision_and_feature_planning.docx
-- Meeting - Sprint Retrospective, Review, and Planning --> ./docs/meeting-sprint_retrospective_review_and_planning.docx
-- Meeting - Sprint Open Topic Session --> ./docs/meeting-sprint_open_topic_session.docx
+- [Wiki](https://github.com/chingu-voyages/V59-tier3-team-32/wiki)
+- [Jira board](https://v59t32.atlassian.net/jira/software/projects/V59T3T32)
+- [Figma board](https://www.figma.com/design/0aNCIJZQ1PxRcpTnjFCN9e/Chingu-Voyage-59)
 
 ## Our Team
 
