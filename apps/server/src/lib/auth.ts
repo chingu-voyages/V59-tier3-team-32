@@ -35,7 +35,7 @@ export const auth = betterAuth({
         attributes: {
           sameSite: "none",
           secure: true,
-          partitioned: true, // this potentially causes the same issue, try with & without
+          // partitioned: true, // this potentially causes the same issue, try with & without
         },
       },
     },
