@@ -26,7 +26,7 @@ const Header = () => {
         <Link href="/" aria-label="Home - Logo">
           <Image src="/icons/logo.svg" alt="Logo" width={150} height={150} />
         </Link>
-        <div className="  hidden lg:flex gap-x-12 items-center justify-between w-full xl:pl-48">
+        <div className="hidden md:flex gap-x-12 items-center justify-between w-full xl:pl-48">
           <CurrentDate />
           <ul role="list" className="flex gap-x-12 ">
             <li>
@@ -49,7 +49,7 @@ const Header = () => {
 
           {/* {authContext ? <UserNav user={authContext.user} /> : <AuthLinks />} */}
         </div>
-        <div className="lg:hidden flex items-center">
+        <div className="md:hidden flex items-center">
           {/* {authContext ? (
             <UserNav user={authContext.user} />
           ) : ( */}
@@ -95,7 +95,7 @@ const HamburgerMenu = ({ pathname }: { pathname: string }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="bg-[#161c2f] border-[#161c2f] lg:hidden"
+        className="bg-[#161c2f] border-[#161c2f] md:hidden"
       >
         <DropdownMenuItem asChild>
           <Link
