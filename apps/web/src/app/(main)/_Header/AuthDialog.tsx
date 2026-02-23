@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { signIn } from "@/lib/auth-client";
 import { Provider } from "@/lib/types";
+import { useTransition } from "react";
 
 type AuthType = "login" | "signup";
 
@@ -21,19 +22,15 @@ const AuthDialog = ({
   authType: AuthType;
   children: React.ReactNode;
 }) => {
-  const handleSocialSignIn = (provider: Provider) => async () => {
-    await signIn.social(
-      {
+  const [isPending, startTransition] = useTransition();
+  const handleSocialSignIn = (provider: Provider) => () => {
+    startTransition(async () => {
+      await signIn.social({
         provider,
         callbackURL: window.location.origin,
         errorCallbackURL: window.location.origin,
-      },
-      {
-        // TODO: Consider using a toast for updates
-        onSuccess: () => {},
-        onError: () => {},
-      },
-    );
+      });
+    });
   };
 
   return (
@@ -56,6 +53,7 @@ const AuthDialog = ({
 
           <div className="flex flex-col gap-y-6 max-w-xs">
             <Button
+              disabled={isPending}
               className="hover:bg-accent cursor-pointer px-6 py-5"
               onClick={handleSocialSignIn("github")}
             >
@@ -67,6 +65,7 @@ const AuthDialog = ({
               </span>
             </Button>
             <Button
+              disabled={isPending}
               variant={"outline"}
               className="border-primary hover:bg-slate-900 cursor-pointer px-6 py-5"
               onClick={handleSocialSignIn("google")}

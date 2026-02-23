@@ -11,11 +11,11 @@ export default function Error({ error }: { error: Error }) {
         <p>An unexpected error occured: {error.message}</p>
       </section>
       <nav className="flex gap-x-4 justify-center">
-        <Link href={"/"} className="cursor-pointer">
-          <Button className="p-5 bg-[#7CA8F9]">Go home</Button>
+        <Link href={"/"}>
+          <Button className="p-5 cursor-pointer bg-[#7CA8F9]">Go home</Button>
         </Link>
-        <Link href={"/roles"} className="cursor-pointer">
-          <Button variant={"outline"} className="p-5">
+        <Link href={"/roles"}>
+          <Button variant={"outline"} className="p-5 cursor-pointer">
             See roles
           </Button>
         </Link>

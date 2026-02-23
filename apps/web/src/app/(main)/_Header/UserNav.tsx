@@ -18,19 +18,28 @@ import { signOut } from "@/lib/auth-client";
 import { User } from "better-auth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useTransition } from "react";
+import { toast } from "sonner";
 
 const UserNav = ({ user }: { user: User }) => {
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
-  const handleLogout = async () => {
-    await signOut({
-      fetchOptions: {
-        onSuccess: async () => {
-          router.replace("/");
+  const handleLogout = () => {
+    const logoutToast = toast.loading("Logging out...");
+    startTransition(async () => {
+      await signOut({
+        fetchOptions: {
+          onSuccess: async () => {
+            router.replace("/");
+            toast.dismiss(logoutToast);
+          },
+          onError: () => {
+            toast.dismiss(logoutToast);
+            toast.error("Couldn't log out, please try again.");
+          },
         },
-        // onError: () => {
-        // },
-      },
+      });
     });
   };
 
@@ -108,6 +117,7 @@ const UserNav = ({ user }: { user: User }) => {
         <DropdownMenuSeparator className="bg-[#0f1425]" />
         <div className="flex items-center justify-center p-3">
           <Button
+            disabled={isPending}
             type="button"
             variant="outline"
             onClick={handleLogout}

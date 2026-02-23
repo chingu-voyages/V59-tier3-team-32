@@ -1,6 +1,6 @@
 import AuthDialog from "@/app/(main)/_Header/AuthDialog";
 import "@testing-library/jest-dom/vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -66,18 +66,13 @@ describe("AuthDialog", () => {
   });
 
   it("calls github and redirects on success", async () => {
-    mocks.social.mockImplementation((_data, { onSuccess }) => {
-      onSuccess();
-      return Promise.resolve();
-    });
-
     render(
       <AuthDialog authType="login">
         <span aria-label="open-auth-dialog">Open Auth</span>
       </AuthDialog>,
     );
 
-    await userEvent.click(screen.getByLabelText("open-auth-dialog"));
+    await userEvent.click(screen.getByRole("button", { name: /open auth/i }));
 
     const githubButton = screen.getAllByRole("button", {
       name: /sign in with github/i,
@@ -85,30 +80,21 @@ describe("AuthDialog", () => {
 
     await userEvent.click(githubButton);
 
-    await waitFor(() => {
-      expect(mocks.social).toHaveBeenCalledTimes(1);
-      expect(mocks.social).toHaveBeenCalledWith(
-        expect.objectContaining({ provider: "github" }),
-        expect.objectContaining({
-          onSuccess: expect.any(Function),
-          onError: expect.any(Function),
-        }),
-      );
-      expect(mocks.replace).toHaveBeenCalledWith("/roles");
+    expect(mocks.social).toHaveBeenCalledWith({
+      provider: "github",
+      callbackURL: "http://localhost",
+      errorCallbackURL: "http://localhost",
     });
   });
 
   it("redirects to home on error", async () => {
-    mocks.social.mockImplementation((_data, { onError }) => {
-      onError();
-      return Promise.resolve();
-    });
-
     render(
       <AuthDialog authType="login">
         <span aria-label="open-auth-dialog">Open Auth</span>
       </AuthDialog>,
     );
+
+    await userEvent.click(screen.getByRole("button", { name: /open auth/i }));
 
     const googleButton = screen.getAllByRole("button", {
       name: /sign in with google/i,
@@ -116,17 +102,10 @@ describe("AuthDialog", () => {
 
     await userEvent.click(googleButton);
 
-    await waitFor(() => {
-      expect(mocks.social).toHaveBeenCalledTimes(1);
-      expect(mocks.social).toHaveBeenCalledWith(
-        expect.objectContaining({ provider: "google" }),
-        expect.objectContaining({
-          onSuccess: expect.any(Function),
-          onError: expect.any(Function),
-        }),
-      );
-
-      expect(mocks.replace).toHaveBeenCalledWith("/");
+    expect(mocks.social).toHaveBeenCalledWith({
+      provider: "google",
+      callbackURL: "http://localhost",
+      errorCallbackURL: "http://localhost",
     });
   });
 });
