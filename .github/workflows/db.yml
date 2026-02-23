@@ -1,0 +1,82 @@
+name: DB
+
+on:
+  pull_request:
+    branches: [dev]
+    paths:
+      - 'apps/server/src/database/**'
+      - 'apps/server/drizzle.config.ts'
+      - 'package*.json'
+      - '.github/workflows/db.yml'
+  push:
+    branches: [dev, main]
+    paths:
+      - 'apps/server/src/database/**'
+      - 'apps/server/drizzle.config.ts'
+      - 'package*.json'
+      - '.github/workflows/db.yml'
+
+jobs:
+  drift-check:
+    runs-on: ubuntu-latest
+
+    environment: ${{ github.ref_name == 'main' && 'Production - v59-tier3-team-32-server' || 'Preview - v59-tier3-team-32-server' }}
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Check for migration drift
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
+          BETTER_AUTH_URL: ${{ 'http://localhost:8080' }}
+          FRONTEND_ORIGIN: ${{ 'http://localhost:3000' }}
+          SERVER_PORT: ${{ '8080' }}
+          GITHUB_CLIENT_ID: ${{ 'github-client-id' }}
+          GITHUB_CLIENT_SECRET: ${{ 'github-client-secret' }}
+          GOOGLE_CLIENT_ID: ${{ 'google-client-id' }}
+          GOOGLE_CLIENT_SECRET: ${{ 'google-client-secret' }}
+
+        run: |
+          npm run db:generate
+          git diff --exit-code
+
+  migrate:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    needs: drift-check
+
+    environment: ${{ github.ref_name == 'main' && 'Production - v59-tier3-team-32-server' || 'Preview - v59-tier3-team-32-server' }}
+
+    concurrency:
+      group: migrate-${{ github.ref_name }}
+      cancel-in-progress: false
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run DB migrations
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
+          BETTER_AUTH_URL: ${{ 'http://localhost:8080' }}
+          FRONTEND_ORIGIN: ${{ 'http://localhost:3000' }}
+          SERVER_PORT: ${{ '8080' }}
+          GITHUB_CLIENT_ID: ${{ 'github-client-id' }}
+          GITHUB_CLIENT_SECRET: ${{ 'github-client-secret' }}
+          GOOGLE_CLIENT_ID: ${{ 'google-client-id' }}
+          GOOGLE_CLIENT_SECRET: ${{ 'google-client-secret' }}
+
+        run: npm run db:migrate

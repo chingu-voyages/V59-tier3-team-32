@@ -1,0 +1,35 @@
+{
+    "include": [
+        "src"
+    ],
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "dist",
+        "target": "es2023",
+        "lib": [
+            "ES2023"
+        ],
+        "strict": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "skipLibCheck": true,
+        "module": "nodenext",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "moduleDetection": "force",
+        "isolatedModules": true,
+        "verbatimModuleSyntax": true,
+        "forceConsistentCasingInFileNames": true,
+        "rewriteRelativeImportExtensions": true
+    },
+    "exclude": [
+        "**/*.test.ts",
+        "**/*.spec.ts",
+        "tests",
+        "vitest.config.ts",
+    ],
+    "ts-node": {
+        "logError": true
+    }
+}

@@ -1,44 +1,59 @@
-# voyage-tasks
+# Confido
 
-Your project's `readme` is as important to success as your code. For 
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+> Prepare for tech interviews with questions tailored to your role and get instant feedback
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point - 
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+Confido helps Product Owners, Scrum Masters, Designers, and Developers build confidence through focused practice/
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+## Demo
 
-> Own it & Make it your Own!
+🚀 **Try it live:** [Confido](https://v59-tier3-team-32-web.vercel.app)
+
+## Dependencies
+
+To run the project locally, you will need:
+
+- [Node.js](https://nodejs.org/en)
+- [PostgreSQL](https://www.postgresql.org) for a local database
+
+## Dev Setup
+
+1. Install dependencies
+
+   ```sh
+   # from the root of the repo
+   npm ci --legacy-peer-deps
+   ```
+
+2. Create a copy of `.env.example` called `.env` for each app & fill each env var's value.
+3. If using a local database, [start the server](https://www.postgresql.org/docs/current/server-start.html).
+4. run database migrations
+
+   ```sh
+   # from the root of the repo
+   npm run db:migrate
+   ```
+
+5. spin up server & web dev servers
+
+   ```sh
+   # from the root of the repo, in separate terminals
+   npm run server:dev
+   npm run web:dev
+   ```
 
 ## Team Documents
 
-You may find these helpful as you work together to organize your project.
-
-- [Team Project Ideas](./docs/team_project_ideas.md)
-- [Team Decision Log](./docs/team_decision_log.md)
-
-Meeting Agenda templates (located in the `/docs` directory in this repo):
-
-- Meeting - Voyage Kickoff --> ./docs/meeting-voyage_kickoff.docx
-- Meeting - App Vision & Feature Planning --> ./docs/meeting-vision_and_feature_planning.docx
-- Meeting - Sprint Retrospective, Review, and Planning --> ./docs/meeting-sprint_retrospective_review_and_planning.docx
-- Meeting - Sprint Open Topic Session --> ./docs/meeting-sprint_open_topic_session.docx
+- [Wiki](https://github.com/chingu-voyages/V59-tier3-team-32/wiki)
+- [Jira board](https://v59t32.atlassian.net/jira/software/projects/V59T3T32)
+- [Figma board](https://www.figma.com/design/0aNCIJZQ1PxRcpTnjFCN9e/Chingu-Voyage-59)
 
 ## Our Team
 
-Everyone on your team should add their name along with a link to their GitHub
-& optionally their LinkedIn profiles below. Do this in Sprint #1 to validate
-your repo access and to practice PR'ing with your team *before* you start
-coding!
-
-- Teammate name #1: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
-- Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
-   ...
-- Maki Keep: [GitHub](https://github.com/maki-keep)
 - Abba Is'haq: [Gitub](https://github.com/absterr) / [LinkedIn](https://linkedin.com/in/absterr)
-- Yashwanth Venkatesan: [GitHub](https://github.com/tigeryash) / [LinkedIn](https://www.linkedin.com/in/yashwanth-v-29a88392/)
-- Amanda Acolatse: [GitHub](https://github.com/ae-aco) / [LinkedIn](https://linkedin.com/in/amandaacolatse) 
+- Amanda Acolatse: [GitHub](https://github.com/ae-aco) / [LinkedIn](https://linkedin.com/in/amandaacolatse)
+- Maki Keep: [GitHub](https://github.com/maki-keep)
 - Michael Okoro :  [GitHub](https://github.com/abiazfinest)/[LinkedIn](https://www.linkedin.com/in/michaelcokoro/)
+- snowbytes:  [GitHub](https://github.com/snowbytes)
+- Soma Ali: [GitHub](https://github.com/Soma-Ali) / [LinkedIn](https://linkedin.com/in/soma-a-ibrahim)
+- Yakboon: [Github](https://github.com/Yakboon) / [LinkedIn](https://www.linkedin.com/in/nazlı-yüce-423143256/)
+- Yashwanth Venkatesan: [GitHub](https://github.com/tigeryash) / [LinkedIn](https://www.linkedin.com/in/yashwanth-v-29a88392/)

@@ -1,0 +1,7 @@
+{
+    "watch": ["src/"],
+    "ext": "ts,cts,mts",
+    "execMap": {
+      "ts": "node --no-warnings=ExperimentalWarning --loader ts-node/esm"
+    }
+}
